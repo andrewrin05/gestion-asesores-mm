@@ -98,7 +98,7 @@ nav a:hover {
 
 /* Hero */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)), url('https://via.placeholder.com/1200x400?text=Fondo+Corporativo') no-repeat center/cover;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(103, 126, 182, 0.8)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
     color: var(--white);
     padding: 100px 0;
     text-align: center;
