@@ -1,48 +1,48 @@
-# Privacy Policy for Gestion y Asesores M&M
+# Política de Privacidad de Gestion y Asesores M&M
 
-## Introduction
+## Introducción
 
-At Gestion y Asesores M&M, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website or use our services.
+En Gestion y Asesores M&M, nos comprometemos a proteger tu privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos tu información cuando visitas nuestro sitio web o utilizas nuestros servicios.
 
-## Information We Collect
+## Información que Recopilamos
 
-We may collect personal information from you in various ways, including when you visit our site, fill out a form, or interact with us in other ways. The types of information we may collect include:
+Podemos recopilar información personal de ti de varias maneras, incluyendo cuando visitas nuestro sitio, completas un formulario o interactúas con nosotros de otras formas. Los tipos de información que podemos recopilar incluyen:
 
-- Name
-- Email address
-- Phone number
-- Any other information you provide to us
+- Nombre
+- Dirección de correo electrónico
+- Número de teléfono
+- Cualquier otra información que nos proporciones
 
-## How We Use Your Information
+## Cómo Usamos Tu Información
 
-The information we collect from you may be used in the following ways:
+La información que recopilamos de ti puede ser utilizada de las siguientes maneras:
 
-- To improve customer service
-- To personalize user experience
-- To process transactions
-- To send periodic emails regarding your order or other products and services
+- Para mejorar el servicio al cliente
+- Para personalizar la experiencia del usuario
+- Para procesar transacciones
+- Para enviar correos electrónicos periódicos relacionados con tu pedido u otros productos y servicios
 
-## Data Protection
+## Protección de Datos
 
-We implement a variety of security measures to maintain the safety of your personal information. Your personal information is contained behind secured networks and is only accessible by a limited number of persons who have special access rights to such systems.
+Implementamos una variedad de medidas de seguridad para mantener la seguridad de tu información personal. Tu información personal se encuentra detrás de redes seguras y es accesible solo por un número limitado de personas que tienen derechos de acceso especiales a dichos sistemas.
 
-## Sharing Your Information
+## Compartir Tu Información
 
-We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or servicing you, so long as those parties agree to keep this information confidential.
+No vendemos, intercambiamos ni transferimos de otra manera a terceros tu Información Personal Identificable a menos que proporcionemos a los usuarios un aviso previo. Esto no incluye socios de alojamiento web y otras partes que nos ayudan a operar nuestro sitio web, llevar a cabo nuestro negocio o servirte, siempre y cuando esas partes acuerden mantener esta información confidencial.
 
-## Your Rights
+## Tus Derechos
 
-You have the right to request access to the personal information we hold about you and to ask for corrections to any inaccuracies. You also have the right to request the deletion of your personal information, subject to certain exceptions.
+Tienes derecho a solicitar acceso a la información personal que tenemos sobre ti y a pedir correcciones a cualquier inexactitud. También tienes derecho a solicitar la eliminación de tu información personal, sujeto a ciertas excepciones.
 
-## Changes to Our Privacy Policy
+## Cambios a Nuestra Política de Privacidad
 
-We may update this Privacy Policy from time to time. We will notify you about significant changes in the way we treat personal information by sending a notice to the primary email address specified in your account or by placing a prominent notice on our site.
+Podemos actualizar esta Política de Privacidad de vez en cuando. Te notificaremos sobre cambios significativos en la forma en que tratamos la información personal enviando un aviso a la dirección de correo electrónico principal especificada en tu cuenta o colocando un aviso destacado en nuestro sitio.
 
-## Contact Us
+## Contáctanos
 
-If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at:
+Si tienes alguna pregunta sobre esta Política de Privacidad, las prácticas de este sitio o tus tratos con este sitio, por favor contáctanos en:
 
 Gestion y Asesores M&M  
-[Contact Information]  
-[Email Address]  
-[Phone Number]  
+CALLE FLORENCIO GARCIA 6 LOCAL 13  
+gestionyasesoresmm@gmail.com  
+628 449 014 | 620 916 063  
