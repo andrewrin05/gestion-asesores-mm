@@ -638,9 +638,291 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
+.content-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
 .content-section p, .content-section ul {
     margin-bottom: 20px;
     line-height: 1.6;
+}
+
+/* About Page Styles */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.content-text h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.content-text p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.content-image {
+    text-align: center;
+}
+
+.content-icon {
+    font-size: 8rem;
+    color: var(--primary-color);
+    opacity: 0.7;
+}
+
+.mission-vision-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.mission-vision-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+}
+
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+.mission-card, .vision-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.mission-card:hover, .vision-card:hover {
+    transform: translateY(-5px);
+}
+
+.mission-icon, .vision-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.mission-card h3, .vision-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.mission-card p, .vision-card p {
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.values-section {
+    padding: 80px 0;
+    background-color: var(--bg-color);
+}
+
+.values-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.value-card {
+    background: var(--white);
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.value-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.value-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.value-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.team-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    text-align: center;
+}
+
+.team-section h2 {
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+
+.team-section > p {
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.team-member {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.member-avatar {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+}
+
+.team-member h3 {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.member-role {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.member-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.stats-about-section {
+    padding: 80px 0;
+    background-color: var(--bg-color);
+    text-align: center;
+}
+
+.stats-about-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+}
+
+.stats-about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-about-item {
+    padding: 30px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-about-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.stat-about-label {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.cta-about-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta-about-section p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-about-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-about-buttons .btn-primary,
+.cta-about-buttons .btn-secondary {
+    padding: 15px 30px;
+    font-size: 1.1rem;
 }
 
 /* Responsive Design */
@@ -670,8 +952,50 @@ nav a:hover {
         align-items: center;
     }
 
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .cta-buttons .btn-primary,
     .cta-buttons .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* About page responsive */
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .content-icon {
+        font-size: 5rem;
+    }
+
+    .mission-vision-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-about-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .cta-about-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-about-buttons .btn-primary,
+    .cta-about-buttons .btn-secondary {
         width: 100%;
         max-width: 300px;
     }
