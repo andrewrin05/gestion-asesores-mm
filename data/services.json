@@ -1,0 +1,39 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Seguro de Vida",
+      "description": "Protección financiera para tus seres queridos en caso de fallecimiento.",
+      "coverage": "Cobertura a nivel nacional.",
+      "price": "Desde $20 al mes"
+    },
+    {
+      "id": 2,
+      "name": "Seguro de Salud",
+      "description": "Cobertura médica integral para ti y tu familia.",
+      "coverage": "Consultas, hospitalización y medicamentos.",
+      "price": "Desde $50 al mes"
+    },
+    {
+      "id": 3,
+      "name": "Seguro de Automóvil",
+      "description": "Protección para tu vehículo contra accidentes y robos.",
+      "coverage": "Cobertura a todo riesgo y responsabilidad civil.",
+      "price": "Desde $30 al mes"
+    },
+    {
+      "id": 4,
+      "name": "Seguro de Hogar",
+      "description": "Protección para tu vivienda y pertenencias contra robos y desastres.",
+      "coverage": "Cobertura de daños por incendio, robo y desastres naturales.",
+      "price": "Desde $25 al mes"
+    },
+    {
+      "id": 5,
+      "name": "Seguro de Viaje",
+      "description": "Cobertura para imprevistos durante tus viajes.",
+      "coverage": "Cancelación de viaje, asistencia médica y pérdida de equipaje.",
+      "price": "Desde $15 por viaje"
+    }
+  ]
+}

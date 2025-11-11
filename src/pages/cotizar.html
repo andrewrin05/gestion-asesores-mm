@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizar - Gestion y Asesores M&M</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <!-- Header Component -->
+    <header class="site-header fade-in">
+        <div class="container">
+            <div class="logo">
+                <h1>Gestion y Asesores M&M</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Inicio</a></li>
+                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="cotizar.html">Cotizar</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="quote-hero fade-in">
+            <div class="container">
+                <h1>Solicita tu Cotización</h1>
+                <p>Rellena el formulario con tus datos para obtener una cotización personalizada de seguros.</p>
+            </div>
+        </section>
+
+        <section class="quote-form-section slide-up">
+            <div class="container">
+                <form id="quote-form" action="https://formspree.io/f/tu-form-id" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" id="apellidos" name="apellidos" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dni">DNI</label>
+                            <input type="text" id="dni" name="dni" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="matricula">Matrícula</label>
+                            <input type="text" id="matricula" name="matricula" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_carnet">Fecha de Carnet</label>
+                            <input type="date" id="fecha_carnet" name="fecha_carnet" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="codigo_postal">Código Postal</label>
+                            <input type="text" id="codigo_postal" name="codigo_postal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="marca">Marca del Coche</label>
+                            <input type="text" id="marca" name="marca" required>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="modelo">Modelo del Coche</label>
+                        <input type="text" id="modelo" name="modelo" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Enviar Cotización</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="site-footer fade-in">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Gestion y Asesores M&M. Todos los derechos reservados.</p>
+                <ul>
+                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="cotizar.html">Cotizar</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="../docs/privacy.md">Política de Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+</body>
+</html>

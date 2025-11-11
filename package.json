@@ -1,0 +1,23 @@
+{
+  "name": "gestion-y-asesores-mm",
+  "version": "1.0.0",
+  "description": "Página informativa sobre seguros de Gestion y Asesores M&M",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build process not defined'",
+    "test": "echo 'No tests defined'"
+  },
+  "keywords": [
+    "seguros",
+    "asesores",
+    "gestion",
+    "informativo"
+  ],
+  "author": "Gestion y Asesores M&M",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
