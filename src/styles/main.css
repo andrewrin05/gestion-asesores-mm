@@ -168,7 +168,7 @@ nav a:hover {
 }
 
 .service-card {
-    background-color: var(--bg-color);
+    background-color: var(--white);
     padding: 30px;
     border-radius: 10px;
     box-shadow: var(--shadow);
@@ -179,6 +179,30 @@ nav a:hover {
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    color: var(--accent-color);
+    transform: scale(1.1);
 }
 
 .service-card h3 {
