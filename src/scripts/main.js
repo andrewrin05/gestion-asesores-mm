@@ -46,11 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Basic DNI validation (Spanish format)
-            const dniRegex = /^\d{8}[A-Z]$/;
-            if (!dniRegex.test(dni.toUpperCase())) {
+            // Basic DNI/NIE validation (Spanish format)
+            const dniNieRegex = /^(\d{8}[A-Z]|[XYZ]\d{7}[A-Z])$/i;
+            if (!dniNieRegex.test(dni.toUpperCase())) {
                 event.preventDefault();
-                alert('Por favor, ingresa un DNI válido (8 dígitos + letra).');
+                alert('Por favor, ingresa un DNI (8 dígitos + letra) o NIE (X/Y/Z + 7 dígitos + letra) válido.');
                 return;
             }
 
