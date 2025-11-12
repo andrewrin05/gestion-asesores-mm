@@ -114,21 +114,13 @@ document.addEventListener('DOMContentLoaded', function() {
         drawerOverlay.classList.add('active');
         mobileMenuBtn.classList.add('active');
         body.style.overflow = 'hidden'; // Prevent scrolling
-        // Small delay to ensure drawer is open before animating items
-        setTimeout(() => {
-            mobileDrawer.classList.add('animate-items');
-        }, 50);
     }
 
     function closeDrawer() {
-        mobileDrawer.classList.remove('animate-items');
+        mobileDrawer.classList.remove('open');
         drawerOverlay.classList.remove('active');
         mobileMenuBtn.classList.remove('active');
         body.style.overflow = ''; // Restore scrolling
-        // Delay removing 'open' class to allow exit animation
-        setTimeout(() => {
-            mobileDrawer.classList.remove('open');
-        }, 300);
     }
 
     if (mobileMenuBtn) {
