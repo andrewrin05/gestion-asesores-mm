@@ -1134,8 +1134,8 @@ nav a:hover {
         font-weight: 600;
     }
 
-    /* Hide desktop nav on mobile */
-    nav {
+    /* Hide only the header nav on mobile; keep drawer nav visible */
+    .site-header nav {
         display: none !important;
     }
 
