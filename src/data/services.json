@@ -3,247 +3,247 @@
     {
       "id": 1,
       "name": "Seguro de Vida",
+      "emoji": "❤️",
       "description": "Protección financiera para tus seres queridos en caso de fallecimiento.",
-      "coverage": "Cobertura a nivel nacional.",
-      "price": "Desde $20 al mes"
+      "coverage": "Cobertura a nivel nacional."
     },
     {
       "id": 2,
       "name": "Seguro de Salud",
+      "emoji": "🏥",
       "description": "Cobertura médica integral para ti y tu familia.",
-      "coverage": "Consultas, hospitalización y medicamentos.",
-      "price": "Desde $50 al mes"
+      "coverage": "Consultas, hospitalización y medicamentos."
     },
     {
       "id": 3,
       "name": "Seguro de Automóvil",
+      "emoji": "🚗",
       "description": "Protección para tu vehículo contra accidentes y robos.",
-      "coverage": "Cobertura a todo riesgo y responsabilidad civil.",
-      "price": "Desde $30 al mes"
+      "coverage": "Cobertura a todo riesgo y responsabilidad civil."
     },
     {
       "id": 4,
       "name": "Seguro de Hogar",
+      "emoji": "🏠",
       "description": "Protección para tu vivienda y pertenencias contra robos y desastres.",
-      "coverage": "Cobertura de daños por incendio, robo y desastres naturales.",
-      "price": "Desde $25 al mes"
+      "coverage": "Cobertura de daños por incendio, robo y desastres naturales."
     },
     {
       "id": 5,
       "name": "Seguro de Viaje",
+      "emoji": "✈️",
       "description": "Cobertura para imprevistos durante tus viajes.",
-      "coverage": "Cancelación de viaje, asistencia médica y pérdida de equipaje.",
-      "price": "Desde $15 por viaje"
+      "coverage": "Cancelación de viaje, asistencia médica y pérdida de equipaje."
     },
     {
       "id": 6,
       "name": "Seguro de Decesos",
+      "emoji": "🕊️",
       "description": "Cobertura completa para gastos funerarios y trámites administrativos.",
-      "coverage": "Servicio funerario, traslado y gestión administrativa.",
-      "price": "Desde $15 al mes"
+      "coverage": "Servicio funerario, traslado y gestión administrativa."
     },
     {
       "id": 7,
       "name": "Seguro de Mascotas",
+      "emoji": "🐾",
       "description": "Protección veterinaria y asistencia para tus mascotas.",
-      "coverage": "Consultas veterinarias, hospitalización y medicamentos.",
-      "price": "Desde $10 al mes"
+      "coverage": "Consultas veterinarias, hospitalización y medicamentos."
     },
     {
       "id": 8,
       "name": "Seguro Dental",
+      "emoji": "🦷",
       "description": "Cobertura especializada para tratamientos dentales.",
-      "coverage": "Limpiezas, tratamientos y prótesis dentales.",
-      "price": "Desde $8 al mes"
+      "coverage": "Limpiezas, tratamientos y prótesis dentales."
     },
     {
       "id": 9,
       "name": "Seguro de Accidentes",
+      "emoji": "⚠️",
       "description": "Protección contra accidentes personales y sus consecuencias.",
-      "coverage": "Invalidez, incapacidad temporal y fallecimiento por accidente.",
-      "price": "Desde $12 al mes"
+      "coverage": "Invalidez, incapacidad temporal y fallecimiento por accidente."
     },
     {
       "id": 10,
       "name": "Seguro de Jubilación",
+      "emoji": "🧓",
       "description": "Planificación financiera para tu retiro con rentas vitalicias.",
-      "coverage": "Ahorro sistemático y rentas garantizadas.",
-      "price": "Planes personalizados"
+      "coverage": "Ahorro sistemático y rentas garantizadas."
     },
     {
       "id": 11,
       "name": "Seguro de Incapacidad",
+      "emoji": "♿",
       "description": "Protección económica en caso de incapacidad laboral.",
-      "coverage": "Renta mensual por incapacidad temporal o permanente.",
-      "price": "Desde $25 al mes"
+      "coverage": "Renta mensual por incapacidad temporal o permanente."
     },
     {
       "id": 13,
       "name": "Seguro de Comercio",
+      "emoji": "🏬",
       "description": "Protección integral para tu negocio comercial. Cobertura contra robos, incendios y daños.",
-      "coverage": "Multirriesgo comercial, robo, incendio y responsabilidad civil.",
-      "price": "Desde $40 al mes"
+      "coverage": "Multirriesgo comercial, robo, incendio y responsabilidad civil."
     },
     {
       "id": 14,
       "name": "Seguro para Autónomos",
+      "emoji": "💼",
       "description": "Cobertura específica para trabajadores autónomos. Protección personal y profesional.",
-      "coverage": "Incapacidad laboral, responsabilidad civil y protección jurídica.",
-      "price": "Desde $25 al mes"
+      "coverage": "Incapacidad laboral, responsabilidad civil y protección jurídica."
     },
     {
       "id": 15,
       "name": "Seguro de Comunidad",
+      "emoji": "🏢",
       "description": "Protección para comunidades de propietarios. Cubre daños comunes y responsabilidad.",
-      "coverage": "Daños en zonas comunes, responsabilidad civil y defensa jurídica.",
-      "price": "Planes comunitarios"
+      "coverage": "Daños en zonas comunes, responsabilidad civil y defensa jurídica."
     },
     {
       "id": 16,
       "name": "Seguro de Ciberriesgos",
+      "emoji": "💻",
       "description": "Protección contra ciberataques, pérdida de datos y responsabilidad digital.",
-      "coverage": "Ataques informáticos, ransomware y responsabilidad por brechas de datos.",
-      "price": "Desde $30 al mes"
+      "coverage": "Ataques informáticos, ransomware y responsabilidad por brechas de datos."
     },
     {
       "id": 17,
       "name": "Seguro de Crédito",
+      "emoji": "💳",
       "description": "Protección contra impagos de clientes y proveedores. Financiación de ventas.",
-      "coverage": "Impagos comerciales, insolvencias y financiación de exportaciones.",
-      "price": "Según volumen de negocio"
+      "coverage": "Impagos comerciales, insolvencias y financiación de exportaciones."
     },
     {
       "id": 18,
       "name": "Seguro de Caución",
+      "emoji": "🧾",
       "description": "Avales y garantías para licitaciones, contratos y obligaciones fiscales.",
-      "coverage": "Garantías contractuales, licitaciones y cumplimiento fiscal.",
-      "price": "Según importe garantizado"
+      "coverage": "Garantías contractuales, licitaciones y cumplimiento fiscal."
     },
     {
       "id": 19,
       "name": "Seguro de Transporte",
+      "emoji": "🚚",
       "description": "Cobertura para mercancías en tránsito por carretera, mar o aire.",
-      "coverage": "Daños en tránsito, robo y responsabilidad por daños a terceros.",
-      "price": "Según valor y ruta"
+      "coverage": "Daños en tránsito, robo y responsabilidad por daños a terceros."
     },
     {
       "id": 22,
       "name": "Seguro de Protección de Pagos",
+      "emoji": "💰",
       "description": "Protección financiera para pagos de hipoteca o alquiler en caso de desempleo o incapacidad.",
-      "coverage": "Cobertura de cuotas hipotecarias, alquiler y otros pagos esenciales.",
-      "price": "Desde $20 al mes"
+      "coverage": "Cobertura de cuotas hipotecarias, alquiler y otros pagos esenciales."
     },
     {
       "id": 23,
       "name": "Seguro de Asistencia en Carretera",
+      "emoji": "🛠️",
       "description": "Asistencia 24/7 en carretera con grúa, vehículo de sustitución y reparaciones.",
-      "coverage": "Remolque, reparación in situ, vehículo de sustitución y asistencia jurídica.",
-      "price": "Desde $25 al mes"
+      "coverage": "Remolque, reparación in situ, vehículo de sustitución y asistencia jurídica."
     },
     {
       "id": 24,
       "name": "Seguro de Eventos",
+      "emoji": "🎉",
       "description": "Protección para celebraciones especiales como bodas, comuniones y eventos corporativos.",
-      "coverage": "Cancelación por enfermedad, daños en local, responsabilidad civil y asistencia.",
-      "price": "Según tipo de evento"
+      "coverage": "Cancelación por enfermedad, daños en local, responsabilidad civil y asistencia."
     },
     {
       "id": 25,
       "name": "Seguro de Joyas y Objetos de Valor",
+      "emoji": "💎",
       "description": "Cobertura especializada para joyas, relojes, arte y objetos de alto valor.",
-      "coverage": "Robo, pérdida, daño accidental y tasación profesional.",
-      "price": "Según valor asegurado"
+      "coverage": "Robo, pérdida, daño accidental y tasación profesional."
     },
     {
       "id": 26,
       "name": "Seguro de Equipaje",
+      "emoji": "🧳",
       "description": "Protección para equipaje durante viajes. Cubre pérdida, robo y daños.",
-      "coverage": "Pérdida de equipaje, robo, daños y demora en la entrega.",
-      "price": "Desde $10 por viaje"
+      "coverage": "Pérdida de equipaje, robo, daños y demora en la entrega."
     },
     {
       "id": 27,
       "name": "Seguro de Anulación de Viaje",
+      "emoji": "🛑",
       "description": "Protección contra cancelaciones de viaje por enfermedad, accidentes u otros imprevistos.",
-      "coverage": "Cancelación por enfermedad, accidente, fallecimiento y otras causas.",
-      "price": "5-10% del viaje"
+      "coverage": "Cancelación por enfermedad, accidente, fallecimiento y otras causas."
     },
     {
       "id": 28,
       "name": "Seguro de Accidentes Laborales",
+      "emoji": "🦺",
       "description": "Cobertura obligatoria para empresas. Protege a empleados contra accidentes laborales.",
-      "coverage": "Accidentes en jornada laboral, enfermedades profesionales y traslados.",
-      "price": "Según número de empleados"
+      "coverage": "Accidentes en jornada laboral, enfermedades profesionales y traslados."
     },
     {
       "id": 29,
       "name": "Seguro de Pérdida de Beneficios",
+      "emoji": "📉",
       "description": "Protección de ingresos empresariales por interrupción de actividad.",
-      "coverage": "Pérdida de ingresos por siniestros, gastos fijos y lucro cesante.",
-      "price": "Según facturación"
+      "coverage": "Pérdida de ingresos por siniestros, gastos fijos y lucro cesante."
     },
     {
       "id": 30,
       "name": "Seguro de Construcción",
+      "emoji": "🏗️",
       "description": "Protección para obras en construcción contra daños y responsabilidades.",
-      "coverage": "Daños en obra, responsabilidad civil, robo de materiales y equipos.",
-      "price": "Según presupuesto obra"
+      "coverage": "Daños en obra, responsabilidad civil, robo de materiales y equipos."
     },
     {
       "id": 31,
       "name": "Seguro de Montaje",
+      "emoji": "🔧",
       "description": "Cobertura para instalación y montaje de maquinaria industrial.",
-      "coverage": "Daños durante montaje, prueba y responsabilidad civil por daños.",
-      "price": "Según valor maquinaria"
+      "coverage": "Daños durante montaje, prueba y responsabilidad civil por daños."
     },
     {
       "id": 32,
       "name": "Seguro de Defensa Jurídica",
+      "emoji": "⚖️",
       "description": "Asistencia legal integral en diversos ámbitos: familia, consumo, circulación, laboral.",
-      "coverage": "Asesoramiento legal, defensa en juicio y reclamaciones.",
-      "price": "Desde $15 al mes"
+      "coverage": "Asesoramiento legal, defensa en juicio y reclamaciones."
     },
     {
       "id": 34,
       "name": "Seguro de Vida Renting",
+      "emoji": "🔄",
       "description": "Alquiler temporal de seguros de vida. Flexibilidad total sin compromisos a largo plazo.",
-      "coverage": "Cobertura temporal por fallecimiento, invalidez y enfermedades graves.",
-      "price": "Desde $10 por mes"
+      "coverage": "Cobertura temporal por fallecimiento, invalidez y enfermedades graves."
     },
     {
       "id": 35,
       "name": "Seguro de Bicicleta",
+      "emoji": "🚲",
       "description": "Protección completa para tu bicicleta y accidentes como ciclista.",
-      "coverage": "Robo de bicicleta, daños accidentales, asistencia en ruta y responsabilidad civil.",
-      "price": "Desde $8 al mes"
+      "coverage": "Robo de bicicleta, daños accidentales, asistencia en ruta y responsabilidad civil."
     },
     {
       "id": 36,
       "name": "Seguro de Drones",
+      "emoji": "🚁",
       "description": "Cobertura especializada para drones profesionales y recreativos.",
-      "coverage": "Daños al dron, responsabilidad civil por daños a terceros y robo.",
-      "price": "Desde $15 al mes"
+      "coverage": "Daños al dron, responsabilidad civil por daños a terceros y robo."
     },
     {
       "id": 37,
       "name": "Seguro de Energía Solar",
+      "emoji": "☀️",
       "description": "Protección para instalaciones fotovoltaicas y sistemas de energía solar.",
-      "coverage": "Daños por fenómenos meteorológicos, robo de paneles y fallos técnicos.",
-      "price": "Desde $20 al mes"
+      "coverage": "Daños por fenómenos meteorológicos, robo de paneles y fallos técnicos."
     },
     {
       "id": 38,
       "name": "Seguro de Key Man",
+      "emoji": "🗝️",
       "description": "Protección contra la pérdida de empleados clave para la empresa.",
-      "coverage": "Fallecimiento o incapacidad de empleados estratégicos, impacto financiero.",
-      "price": "Según valoración del empleado"
+      "coverage": "Fallecimiento o incapacidad de empleados estratégicos, impacto financiero."
     },
     {
       "id": 40,
       "name": "Seguro de Motos",
+      "emoji": "🏍️",
       "description": "Protección completa para motocicletas y moteros. Cobertura contra accidentes, robos y asistencia en carretera.",
-      "coverage": "Responsabilidad civil, daños propios, robo, incendio y asistencia 24/7.",
-      "price": "Desde $25 al mes"
+      "coverage": "Responsabilidad civil, daños propios, robo, incendio y asistencia 24/7."
     }
   ]
 }

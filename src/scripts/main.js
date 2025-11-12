@@ -244,15 +244,18 @@ function initServicesPreview() {
             services.forEach(service => {
                 const card = document.createElement('div');
                 card.className = 'service-card';
+
+                const icon = service.emoji || '⭐';
+                const coverage = service.coverage || '';
+
                 card.innerHTML = `
                     <div class="service-card__header">
-                        <div class="service-card__icon" aria-hidden="true">•</div>
+                        <div class="service-card__icon" aria-hidden="true">${icon}</div>
                         <h3>${service.name}</h3>
                     </div>
                     <p>${service.description}</p>
                     <div class="service-card__meta">
-                        <span>${service.coverage}</span>
-                        <strong>${service.price}</strong>
+                        <span>${coverage}</span>
                     </div>
                 `;
                 servicesGrid.appendChild(card);
