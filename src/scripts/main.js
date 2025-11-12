@@ -109,42 +109,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const drawerOverlay = document.getElementById('drawer-overlay');
     const body = document.body;
 
-    console.log('Elementos del drawer encontrados:');
-    console.log('mobileMenuBtn:', mobileMenuBtn);
-    console.log('mobileDrawer:', mobileDrawer);
-    console.log('drawerClose:', drawerClose);
-    console.log('drawerOverlay:', drawerOverlay);
-
     function openDrawer() {
-        console.log('Abriendo drawer...');
         mobileDrawer.classList.add('open');
         drawerOverlay.classList.add('active');
         mobileMenuBtn.classList.add('active');
         body.style.overflow = 'hidden'; // Prevent scrolling
-        console.log('Drawer abierto:', mobileDrawer.classList.contains('open'));
     }
 
     function closeDrawer() {
-        console.log('Cerrando drawer...');
         mobileDrawer.classList.remove('open');
         drawerOverlay.classList.remove('active');
         mobileMenuBtn.classList.remove('active');
         body.style.overflow = ''; // Restore scrolling
-        console.log('Drawer cerrado:', !mobileDrawer.classList.contains('open'));
     }
 
     if (mobileMenuBtn) {
-        console.log('Botón del menú móvil encontrado:', mobileMenuBtn);
         mobileMenuBtn.addEventListener('click', function() {
-            console.log('Botón del menú clickeado');
             if (mobileDrawer.classList.contains('open')) {
                 closeDrawer();
             } else {
                 openDrawer();
             }
         });
-    } else {
-        console.log('Botón del menú móvil NO encontrado');
     }
 
     if (drawerClose) {
