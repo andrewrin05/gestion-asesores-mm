@@ -97,12 +97,21 @@
                             <input type="text" id="codigo_postal" name="codigo_postal" required>
                         </div>
                         <div class="form-group">
-                            <label for="marca">Marca del Coche</label>
-                            <input type="text" id="marca" name="marca" required>
+                            <label for="tipo_vehiculo">Tipo de Vehículo</label>
+                            <select id="tipo_vehiculo" name="tipo_vehiculo" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="coche">Coche</option>
+                                <option value="moto">Moto</option>
+                            </select>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="marca">Marca del Coche/Moto</label>
+                            <input type="text" id="marca" name="marca" required>
+                        </div>
                     <div class="form-group full-width">
-                        <label for="modelo">Modelo del Coche</label>
+                        <label for="modelo">Modelo del Coche/Moto</label>
                         <input type="text" id="modelo" name="modelo" required>
                     </div>
                     <button type="submit" class="btn-primary">Enviar Cotización</button>
