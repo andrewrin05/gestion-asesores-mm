@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!name || !email || !message) {
                 event.preventDefault();
                 alert('Por favor, completa todos los campos obligatorios.');
+                sendAnalyticsEvent('form_validation_error', 'form', 'contacto', 'campo_incompleto');
                 return;
             }
 
@@ -65,9 +66,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!emailRegex.test(email)) {
                 event.preventDefault();
                 alert('Por favor, ingresa un correo electrónico válido.');
+                sendAnalyticsEvent('form_validation_error', 'form', 'contacto', 'email_invalido');
                 return;
             }
 
+            sendAnalyticsEvent('form_submit', 'form', 'contacto');
             // Formspree will handle the submission
         });
     }
@@ -89,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!nombre || !apellidos || !dni || !matricula || !fechaNacimiento || !fechaCarnet || !codigoPostal || !marca || !modelo) {
                 event.preventDefault();
                 alert('Por favor, completa todos los campos.');
+                sendAnalyticsEvent('form_validation_error', 'form', 'cotizacion', 'campo_incompleto');
                 return;
             }
 
@@ -97,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!dniNieRegex.test(dni.toUpperCase())) {
                 event.preventDefault();
                 alert('Por favor, ingresa un DNI (8 dígitos + letra) o NIE (X/Y/Z + 7 dígitos + letra) válido.');
+                sendAnalyticsEvent('form_validation_error', 'form', 'cotizacion', 'dni_invalido');
                 return;
             }
 
@@ -105,9 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!matriculaRegex.test(matricula.toUpperCase())) {
                 event.preventDefault();
                 alert('Por favor, ingresa una matrícula válida (4 dígitos + 3 letras).');
+                sendAnalyticsEvent('form_validation_error', 'form', 'cotizacion', 'matricula_invalida');
                 return;
             }
 
+            sendAnalyticsEvent('form_submit', 'form', 'cotizacion');
             // Formspree will handle the submission
         });
     }
@@ -193,7 +200,25 @@ document.addEventListener('DOMContentLoaded', function() {
     initServicesPreview();
     initPartnersMarquee();
     initCTAEventTracking();
+    initFormTracking();
 });
+
+function sendAnalyticsEvent(eventName, category, label, value) {
+    if (typeof window.gtag !== 'function') {
+        return;
+    }
+
+    const eventPayload = {
+        event_category: category,
+        event_label: label
+    };
+
+    if (typeof value !== 'undefined') {
+        eventPayload.value = value;
+    }
+
+    window.gtag('event', eventName, eventPayload);
+}
 
 function initServicesPreview() {
     const servicesGrid = document.querySelector('[data-services-grid]');
@@ -272,10 +297,6 @@ function initPartnersMarquee() {
 }
 
 function initCTAEventTracking() {
-    if (typeof window.gtag !== 'function') {
-        return;
-    }
-
     const trackedElements = document.querySelectorAll('[data-track-event]');
     trackedElements.forEach(element => {
         element.addEventListener('click', () => {
@@ -283,10 +304,41 @@ function initCTAEventTracking() {
             const eventCategory = element.dataset.trackCategory || 'cta';
             const eventLabel = element.dataset.trackLabel || element.textContent.trim();
 
-            window.gtag('event', eventName, {
-                event_category: eventCategory,
-                event_label: eventLabel
-            });
+            sendAnalyticsEvent(eventName, eventCategory, eventLabel);
         });
+    });
+}
+
+function initFormTracking() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        setupFormAnalytics(contactForm, 'contacto');
+    }
+
+    const quoteForm = document.getElementById('quote-form');
+    if (quoteForm) {
+        setupFormAnalytics(quoteForm, 'cotizacion');
+    }
+}
+
+function setupFormAnalytics(form, formName) {
+    let started = false;
+
+    form.addEventListener('focusin', () => {
+        if (!started) {
+            sendAnalyticsEvent('form_start', 'form', formName);
+            started = true;
+        }
+    });
+
+    form.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!target) {
+            return;
+        }
+
+        if (target.matches('button[type="submit"], input[type="submit"]')) {
+            sendAnalyticsEvent('form_cta_click', 'form', formName);
+        }
     });
 }

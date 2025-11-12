@@ -641,6 +641,79 @@ nav a:hover {
     font-size: 0.9rem;
 }
 
+.faq-section {
+    padding: 80px 0;
+    background-color: var(--bg-color);
+}
+
+.faq-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2.1rem;
+}
+
+.faq-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 40px;
+    color: var(--secondary-color);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-list details {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 18px 22px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(30, 58, 138, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-list details[open] {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(30, 58, 138, 0.12);
+}
+
+.faq-list summary {
+    font-weight: 600;
+    color: var(--primary-color);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 24px;
+}
+
+.faq-list summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-list summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-list details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.faq-list p {
+    margin-top: 12px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
 /* CTA Section */
 .cta-section {
     padding: 80px 0;
@@ -1394,6 +1467,18 @@ nav a:hover {
         padding: 15px;
     }
 
+    .faq-section {
+        padding: 40px 0;
+    }
+
+    .faq-intro {
+        margin-bottom: 25px;
+    }
+
+    .faq-list details {
+        padding: 14px 16px;
+    }
+
     /* CTA Mobile */
     .cta-section {
         padding: 40px 0;
@@ -1588,6 +1673,10 @@ nav a:hover {
     .feature-card,
     .testimonial-card {
         padding: 20px 15px;
+    }
+
+    .faq-list details {
+        padding: 12px 14px;
     }
 
     .cta-section h2 {
