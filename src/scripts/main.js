@@ -101,4 +101,56 @@ document.addEventListener('DOMContentLoaded', function() {
             // Formspree will handle the submission
         });
     }
+
+    // Mobile Drawer Menu Functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerClose = document.getElementById('drawer-close');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    const body = document.body;
+
+    function openDrawer() {
+        mobileDrawer.classList.add('open');
+        drawerOverlay.classList.add('active');
+        mobileMenuBtn.classList.add('active');
+        body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    function closeDrawer() {
+        mobileDrawer.classList.remove('open');
+        drawerOverlay.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        body.style.overflow = ''; // Restore scrolling
+    }
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            if (mobileDrawer.classList.contains('open')) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+        });
+    }
+
+    if (drawerClose) {
+        drawerClose.addEventListener('click', closeDrawer);
+    }
+
+    if (drawerOverlay) {
+        drawerOverlay.addEventListener('click', closeDrawer);
+    }
+
+    // Close drawer when clicking on navigation links
+    const drawerLinks = document.querySelectorAll('.drawer-nav a');
+    drawerLinks.forEach(link => {
+        link.addEventListener('click', closeDrawer);
+    });
+
+    // Close drawer on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+            closeDrawer();
+        }
+    });
 });

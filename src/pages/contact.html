@@ -47,8 +47,38 @@
                     <li><a href="contact.html">Contacto</a></li>
                 </ul>
             </nav>
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <h2>Menú</h2>
+                <button class="drawer-close" id="drawer-close" aria-label="Cerrar menú">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="drawer-nav">
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="cotizar.html">Cotizar</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Overlay for mobile drawer -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
 
     <main>
         <section class="contact-hero fade-in">
