@@ -78,11 +78,60 @@
       "price": "Desde $25 al mes"
     },
     {
-      "id": 12,
-      "name": "Responsabilidad Civil Profesional",
-      "description": "Protección contra reclamaciones por errores profesionales.",
-      "coverage": "Defensa jurídica y cobertura de indemnizaciones.",
+      "id": 13,
+      "name": "Seguro de Comercio",
+      "description": "Protección integral para tu negocio comercial. Cobertura contra robos, incendios y daños.",
+      "coverage": "Multirriesgo comercial, robo, incendio y responsabilidad civil.",
+      "price": "Desde $40 al mes"
+    },
+    {
+      "id": 14,
+      "name": "Seguro para Autónomos",
+      "description": "Cobertura específica para trabajadores autónomos. Protección personal y profesional.",
+      "coverage": "Incapacidad laboral, responsabilidad civil y protección jurídica.",
+      "price": "Desde $25 al mes"
+    },
+    {
+      "id": 15,
+      "name": "Seguro de Comunidad",
+      "description": "Protección para comunidades de propietarios. Cubre daños comunes y responsabilidad.",
+      "coverage": "Daños en zonas comunes, responsabilidad civil y defensa jurídica.",
+      "price": "Planes comunitarios"
+    },
+    {
+      "id": 16,
+      "name": "Seguro de Ciberriesgos",
+      "description": "Protección contra ciberataques, pérdida de datos y responsabilidad digital.",
+      "coverage": "Ataques informáticos, ransomware y responsabilidad por brechas de datos.",
       "price": "Desde $30 al mes"
+    },
+    {
+      "id": 17,
+      "name": "Seguro de Crédito",
+      "description": "Protección contra impagos de clientes y proveedores. Financiación de ventas.",
+      "coverage": "Impagos comerciales, insolvencias y financiación de exportaciones.",
+      "price": "Según volumen de negocio"
+    },
+    {
+      "id": 18,
+      "name": "Seguro de Caución",
+      "description": "Avales y garantías para licitaciones, contratos y obligaciones fiscales.",
+      "coverage": "Garantías contractuales, licitaciones y cumplimiento fiscal.",
+      "price": "Según importe garantizado"
+    },
+    {
+      "id": 19,
+      "name": "Seguro de Transporte",
+      "description": "Cobertura para mercancías en tránsito por carretera, mar o aire.",
+      "coverage": "Daños en tránsito, robo y responsabilidad por daños a terceros.",
+      "price": "Según valor y ruta"
+    },
+    {
+      "id": 20,
+      "name": "Seguro de Flota",
+      "description": "Protección para vehículos comerciales y flotas empresariales.",
+      "coverage": "Cobertura completa para múltiples vehículos y responsabilidad civil.",
+      "price": "Desde $35 por vehículo"
     }
   ]
 }
