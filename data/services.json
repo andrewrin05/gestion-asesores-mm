@@ -204,11 +204,46 @@
       "price": "Desde $15 al mes"
     },
     {
-      "id": 33,
-      "name": "Seguro de Responsabilidad Civil General",
-      "description": "Cobertura amplia de responsabilidad civil para actividades diarias y profesionales.",
-      "coverage": "Daños a terceros, defensa jurídica y reclamaciones extracontractuales.",
-      "price": "Desde $25 al mes"
+      "id": 34,
+      "name": "Seguro de Vida Renting",
+      "description": "Alquiler temporal de seguros de vida. Flexibilidad total sin compromisos a largo plazo.",
+      "coverage": "Cobertura temporal por fallecimiento, invalidez y enfermedades graves.",
+      "price": "Desde $10 por mes"
+    },
+    {
+      "id": 35,
+      "name": "Seguro de Bicicleta",
+      "description": "Protección completa para tu bicicleta y accidentes como ciclista.",
+      "coverage": "Robo de bicicleta, daños accidentales, asistencia en ruta y responsabilidad civil.",
+      "price": "Desde $8 al mes"
+    },
+    {
+      "id": 36,
+      "name": "Seguro de Drones",
+      "description": "Cobertura especializada para drones profesionales y recreativos.",
+      "coverage": "Daños al dron, responsabilidad civil por daños a terceros y robo.",
+      "price": "Desde $15 al mes"
+    },
+    {
+      "id": 37,
+      "name": "Seguro de Energía Solar",
+      "description": "Protección para instalaciones fotovoltaicas y sistemas de energía solar.",
+      "coverage": "Daños por fenómenos meteorológicos, robo de paneles y fallos técnicos.",
+      "price": "Desde $20 al mes"
+    },
+    {
+      "id": 38,
+      "name": "Seguro de Key Man",
+      "description": "Protección contra la pérdida de empleados clave para la empresa.",
+      "coverage": "Fallecimiento o incapacidad de empleados estratégicos, impacto financiero.",
+      "price": "Según valoración del empleado"
+    },
+    {
+      "id": 39,
+      "name": "Seguro de Directivos",
+      "description": "Responsabilidad civil para directivos y consejeros de empresas.",
+      "coverage": "Reclamaciones por mala gestión, defensa jurídica y cobertura de indemnizaciones.",
+      "price": "Desde $50 al mes"
     }
   ]
 }
