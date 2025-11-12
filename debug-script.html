@@ -1,0 +1,35 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('=== DEBUG HAMBURGER MENU ===');
+
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    console.log('Hamburger element:', hamburger);
+    console.log('Nav menu element:', navMenu);
+
+    if (hamburger) {
+        console.log('Hamburger found, adding event listener');
+        hamburger.addEventListener('click', function(e) {
+            console.log('Hamburger clicked!');
+            e.preventDefault();
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            console.log('Menu active:', navMenu.classList.contains('active'));
+        });
+    } else {
+        console.log('ERROR: Hamburger element not found!');
+    }
+
+    // Check window width
+    console.log('Window width:', window.innerWidth);
+    console.log('Should show hamburger:', window.innerWidth < 900);
+
+    // Check computed styles
+    if (hamburger) {
+        const hamburgerStyle = window.getComputedStyle(hamburger);
+        console.log('Hamburger display:', hamburgerStyle.display);
+        console.log('Hamburger visibility:', hamburgerStyle.visibility);
+    }
+});
+</script>
