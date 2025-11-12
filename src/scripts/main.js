@@ -1,6 +1,42 @@
-// This file contains JavaScript code for any interactive features on the website, such as form validation or dynamic content loading.
-
 document.addEventListener('DOMContentLoaded', function() {
+    // Dynamic vehicle type functionality
+    const tipoVehiculoSelect = document.getElementById('tipo_vehiculo');
+    const marcaLabel = document.querySelector('label[for="marca"]');
+    const modeloLabel = document.querySelector('label[for="modelo"]');
+    const submitButton = document.querySelector('#quote-form button[type="submit"]');
+
+    if (tipoVehiculoSelect && marcaLabel && modeloLabel) {
+        tipoVehiculoSelect.addEventListener('change', function() {
+            const selectedValue = this.value;
+            if (selectedValue === 'coche') {
+                marcaLabel.textContent = 'Marca del Coche';
+                modeloLabel.textContent = 'Modelo del Coche';
+            } else if (selectedValue === 'moto') {
+                marcaLabel.textContent = 'Marca de la Moto';
+                modeloLabel.textContent = 'Modelo de la Moto';
+            } else {
+                marcaLabel.textContent = 'Marca del Coche/Moto';
+                modeloLabel.textContent = 'Modelo del Coche/Moto';
+            }
+        });
+    }
+
+    // Enhanced submit button functionality
+    if (submitButton) {
+        submitButton.addEventListener('click', function(e) {
+            // Add loading state
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            this.disabled = true;
+            this.style.opacity = '0.7';
+
+            // Re-enable after 3 seconds (in case of error)
+            setTimeout(() => {
+                this.innerHTML = 'Enviar Cotización';
+                this.disabled = false;
+                this.style.opacity = '1';
+            }, 3000);
+        });
+    }
     // Form validation for the contact form
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
