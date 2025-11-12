@@ -3,24 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
 
-    console.log('Hamburger element:', hamburger);
-    console.log('Nav menu element:', navMenu);
-
     if (hamburger && navMenu) {
-        console.log('Both elements found, adding event listener');
-
         hamburger.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log('Hamburger clicked');
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
-            console.log('Menu active state:', navMenu.classList.contains('active'));
         });
 
         // Close menu when clicking on a link
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function() {
-                console.log('Link clicked, closing menu');
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
             });
@@ -29,13 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-                console.log('Clicked outside, closing menu');
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
             }
         });
-    } else {
-        console.error('Hamburger or nav menu not found');
     }
 
     // Dynamic vehicle type functionality
