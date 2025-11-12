@@ -127,11 +127,11 @@
       "price": "Según valor y ruta"
     },
     {
-      "id": 20,
-      "name": "Seguro de Flota",
-      "description": "Protección para vehículos comerciales y flotas empresariales.",
-      "coverage": "Cobertura completa para múltiples vehículos y responsabilidad civil.",
-      "price": "Desde $35 por vehículo"
+      "id": 21,
+      "name": "Seguro de Impago de Alquileres",
+      "description": "Protección para propietarios contra impagos de alquileres. Cobertura de rentas impagadas y gastos judiciales.",
+      "coverage": "Impagos de alquiler, gastos judiciales y defensa jurídica.",
+      "price": "Desde $15 al mes"
     }
   ]
 }
