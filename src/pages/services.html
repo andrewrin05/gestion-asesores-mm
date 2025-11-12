@@ -20,6 +20,12 @@
     <meta name="twitter:title" content="Servicios de Seguros - Gestion y Asesores M&M">
     <meta name="twitter:description" content="Descubre nuestros servicios de seguros: Vida, Salud, Auto, Hogar, Empresarial y más. Soluciones personalizadas para proteger tu futuro.">
     <meta name="twitter:image" content="https://gestion-asesores-mm.vercel.app/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -766,8 +772,8 @@
                 <h2>¿Necesitas Protección?</h2>
                 <p>Solicita una cotización gratuita y descubre cómo podemos ayudarte a proteger tu futuro.</p>
                 <div class="cta-services-buttons">
-                    <a href="cotizar.html" class="btn-primary">Solicitar Cotización</a>
-                    <a href="contact.html" class="btn-secondary">Hablar con un Asesor</a>
+                    <a href="cotizar.html" class="btn-primary" data-track-event="cta_cotizar" data-track-category="cta" data-track-label="services_cotizacion">Solicitar Cotización</a>
+                    <a href="contact.html" class="btn-secondary" data-track-event="cta_contacto" data-track-category="cta" data-track-label="services_contacto">Hablar con un Asesor</a>
                 </div>
             </div>
         </section>
@@ -811,6 +817,6 @@
         </div>
     </footer>
 
-    <script src="../scripts/main.js"></script>
+    <script src="../scripts/main.js" data-base-path="../"></script>
 </body>
 </html>

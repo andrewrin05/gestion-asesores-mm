@@ -1,3 +1,13 @@
+const basePath = (() => {
+    const scripts = document.getElementsByTagName('script');
+    for (const script of scripts) {
+        if (script.dataset && typeof script.dataset.basePath !== 'undefined') {
+            return script.dataset.basePath;
+        }
+    }
+    return '';
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
     // Dynamic vehicle type functionality
     const tipoVehiculoSelect = document.getElementById('tipo_vehiculo');
@@ -179,4 +189,104 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    initServicesPreview();
+    initPartnersMarquee();
+    initCTAEventTracking();
 });
+
+function initServicesPreview() {
+    const servicesGrid = document.querySelector('[data-services-grid]');
+    if (!servicesGrid) {
+        return;
+    }
+
+    fetch(`${basePath}data/services.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo cargar el listado de servicios');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const services = Array.isArray(data.services) ? data.services.slice(0, 8) : [];
+            if (!services.length) {
+                servicesGrid.innerHTML = '<p>No se encontraron servicios disponibles por el momento.</p>';
+                return;
+            }
+
+            servicesGrid.innerHTML = '';
+            services.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
+                    <div class="service-card__header">
+                        <div class="service-card__icon" aria-hidden="true">•</div>
+                        <h3>${service.name}</h3>
+                    </div>
+                    <p>${service.description}</p>
+                    <div class="service-card__meta">
+                        <span>${service.coverage}</span>
+                        <strong>${service.price}</strong>
+                    </div>
+                `;
+                servicesGrid.appendChild(card);
+            });
+        })
+        .catch(() => {
+            servicesGrid.innerHTML = '<p class="service-card__error">No pudimos cargar los servicios. Intenta nuevamente más tarde.</p>';
+        });
+}
+
+function initPartnersMarquee() {
+    const track = document.querySelector('[data-partners-track]');
+    if (!track) {
+        return;
+    }
+
+    const partners = [
+        'Mapfre',
+        'Allianz',
+        'AXA',
+        'Generali',
+        'Mutua Madrileña',
+        'Liberty Seguros',
+        'Santalucía',
+        'Zurich'
+    ];
+
+    const fragment = document.createDocumentFragment();
+
+    partners.concat(partners).forEach((partner, index) => {
+        const badge = document.createElement('div');
+        badge.className = 'partner-badge';
+        badge.textContent = partner;
+        badge.setAttribute('aria-label', partner);
+        badge.setAttribute('role', 'img');
+        badge.dataset.index = index;
+        fragment.appendChild(badge);
+    });
+
+    track.innerHTML = '';
+    track.appendChild(fragment);
+}
+
+function initCTAEventTracking() {
+    if (typeof window.gtag !== 'function') {
+        return;
+    }
+
+    const trackedElements = document.querySelectorAll('[data-track-event]');
+    trackedElements.forEach(element => {
+        element.addEventListener('click', () => {
+            const eventName = element.dataset.trackEvent || 'cta_click';
+            const eventCategory = element.dataset.trackCategory || 'cta';
+            const eventLabel = element.dataset.trackLabel || element.textContent.trim();
+
+            window.gtag('event', eventName, {
+                event_category: eventCategory,
+                event_label: eventLabel
+            });
+        });
+    });
+}
