@@ -34,6 +34,55 @@
       "description": "Cobertura para imprevistos durante tus viajes.",
       "coverage": "Cancelación de viaje, asistencia médica y pérdida de equipaje.",
       "price": "Desde $15 por viaje"
+    },
+    {
+      "id": 6,
+      "name": "Seguro de Decesos",
+      "description": "Cobertura completa para gastos funerarios y trámites administrativos.",
+      "coverage": "Servicio funerario, traslado y gestión administrativa.",
+      "price": "Desde $15 al mes"
+    },
+    {
+      "id": 7,
+      "name": "Seguro de Mascotas",
+      "description": "Protección veterinaria y asistencia para tus mascotas.",
+      "coverage": "Consultas veterinarias, hospitalización y medicamentos.",
+      "price": "Desde $10 al mes"
+    },
+    {
+      "id": 8,
+      "name": "Seguro Dental",
+      "description": "Cobertura especializada para tratamientos dentales.",
+      "coverage": "Limpiezas, tratamientos y prótesis dentales.",
+      "price": "Desde $8 al mes"
+    },
+    {
+      "id": 9,
+      "name": "Seguro de Accidentes",
+      "description": "Protección contra accidentes personales y sus consecuencias.",
+      "coverage": "Invalidez, incapacidad temporal y fallecimiento por accidente.",
+      "price": "Desde $12 al mes"
+    },
+    {
+      "id": 10,
+      "name": "Seguro de Jubilación",
+      "description": "Planificación financiera para tu retiro con rentas vitalicias.",
+      "coverage": "Ahorro sistemático y rentas garantizadas.",
+      "price": "Planes personalizados"
+    },
+    {
+      "id": 11,
+      "name": "Seguro de Incapacidad",
+      "description": "Protección económica en caso de incapacidad laboral.",
+      "coverage": "Renta mensual por incapacidad temporal o permanente.",
+      "price": "Desde $25 al mes"
+    },
+    {
+      "id": 12,
+      "name": "Responsabilidad Civil Profesional",
+      "description": "Protección contra reclamaciones por errores profesionales.",
+      "coverage": "Defensa jurídica y cobertura de indemnizaciones.",
+      "price": "Desde $30 al mes"
     }
   ]
 }
