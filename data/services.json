@@ -239,11 +239,11 @@
       "price": "Según valoración del empleado"
     },
     {
-      "id": 39,
-      "name": "Seguro de Directivos",
-      "description": "Responsabilidad civil para directivos y consejeros de empresas.",
-      "coverage": "Reclamaciones por mala gestión, defensa jurídica y cobertura de indemnizaciones.",
-      "price": "Desde $50 al mes"
+      "id": 40,
+      "name": "Seguro de Motos",
+      "description": "Protección completa para motocicletas y moteros. Cobertura contra accidentes, robos y asistencia en carretera.",
+      "coverage": "Responsabilidad civil, daños propios, robo, incendio y asistencia 24/7.",
+      "price": "Desde $25 al mes"
     }
   ]
 }
