@@ -84,6 +84,33 @@ body {
     margin-bottom: 10px;
 }
 
+nav {
+    position: relative;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
 /* Hero */
 .hero {
     background: linear-gradient(135deg, rgba(30, 58, 138, 0.6), rgba(103, 126, 182, 0.6)), url('https://source.unsplash.com/1200x400/?business,handshake') no-repeat center/cover;
