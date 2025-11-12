@@ -127,11 +127,88 @@
       "price": "Según valor y ruta"
     },
     {
-      "id": 21,
-      "name": "Seguro de Impago de Alquileres",
-      "description": "Protección para propietarios contra impagos de alquileres. Cobertura de rentas impagadas y gastos judiciales.",
-      "coverage": "Impagos de alquiler, gastos judiciales y defensa jurídica.",
+      "id": 22,
+      "name": "Seguro de Protección de Pagos",
+      "description": "Protección financiera para pagos de hipoteca o alquiler en caso de desempleo o incapacidad.",
+      "coverage": "Cobertura de cuotas hipotecarias, alquiler y otros pagos esenciales.",
+      "price": "Desde $20 al mes"
+    },
+    {
+      "id": 23,
+      "name": "Seguro de Asistencia en Carretera",
+      "description": "Asistencia 24/7 en carretera con grúa, vehículo de sustitución y reparaciones.",
+      "coverage": "Remolque, reparación in situ, vehículo de sustitución y asistencia jurídica.",
+      "price": "Desde $25 al mes"
+    },
+    {
+      "id": 24,
+      "name": "Seguro de Eventos",
+      "description": "Protección para celebraciones especiales como bodas, comuniones y eventos corporativos.",
+      "coverage": "Cancelación por enfermedad, daños en local, responsabilidad civil y asistencia.",
+      "price": "Según tipo de evento"
+    },
+    {
+      "id": 25,
+      "name": "Seguro de Joyas y Objetos de Valor",
+      "description": "Cobertura especializada para joyas, relojes, arte y objetos de alto valor.",
+      "coverage": "Robo, pérdida, daño accidental y tasación profesional.",
+      "price": "Según valor asegurado"
+    },
+    {
+      "id": 26,
+      "name": "Seguro de Equipaje",
+      "description": "Protección para equipaje durante viajes. Cubre pérdida, robo y daños.",
+      "coverage": "Pérdida de equipaje, robo, daños y demora en la entrega.",
+      "price": "Desde $10 por viaje"
+    },
+    {
+      "id": 27,
+      "name": "Seguro de Anulación de Viaje",
+      "description": "Protección contra cancelaciones de viaje por enfermedad, accidentes u otros imprevistos.",
+      "coverage": "Cancelación por enfermedad, accidente, fallecimiento y otras causas.",
+      "price": "5-10% del viaje"
+    },
+    {
+      "id": 28,
+      "name": "Seguro de Accidentes Laborales",
+      "description": "Cobertura obligatoria para empresas. Protege a empleados contra accidentes laborales.",
+      "coverage": "Accidentes en jornada laboral, enfermedades profesionales y traslados.",
+      "price": "Según número de empleados"
+    },
+    {
+      "id": 29,
+      "name": "Seguro de Pérdida de Beneficios",
+      "description": "Protección de ingresos empresariales por interrupción de actividad.",
+      "coverage": "Pérdida de ingresos por siniestros, gastos fijos y lucro cesante.",
+      "price": "Según facturación"
+    },
+    {
+      "id": 30,
+      "name": "Seguro de Construcción",
+      "description": "Protección para obras en construcción contra daños y responsabilidades.",
+      "coverage": "Daños en obra, responsabilidad civil, robo de materiales y equipos.",
+      "price": "Según presupuesto obra"
+    },
+    {
+      "id": 31,
+      "name": "Seguro de Montaje",
+      "description": "Cobertura para instalación y montaje de maquinaria industrial.",
+      "coverage": "Daños durante montaje, prueba y responsabilidad civil por daños.",
+      "price": "Según valor maquinaria"
+    },
+    {
+      "id": 32,
+      "name": "Seguro de Defensa Jurídica",
+      "description": "Asistencia legal integral en diversos ámbitos: familia, consumo, circulación, laboral.",
+      "coverage": "Asesoramiento legal, defensa en juicio y reclamaciones.",
       "price": "Desde $15 al mes"
+    },
+    {
+      "id": 33,
+      "name": "Seguro de Responsabilidad Civil General",
+      "description": "Cobertura amplia de responsabilidad civil para actividades diarias y profesionales.",
+      "coverage": "Daños a terceros, defensa jurídica y reclamaciones extracontractuales.",
+      "price": "Desde $25 al mes"
     }
   ]
 }
