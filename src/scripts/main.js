@@ -285,8 +285,20 @@ function initServiceMobileRedirect() {
         return;
     }
 
-    const whatsappNumber = '34620916063';
+    const defaultWhatsappNumber = '620916063';
+    const hipotecaWhatsappNumber = '628449014';
     const mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    const formatWhatsappNumber = (rawNumber) => {
+        const digitsOnly = (rawNumber || '').replace(/\D/g, '');
+        if (!digitsOnly) {
+            return defaultWhatsappNumber;
+        }
+        if (digitsOnly.startsWith('34')) {
+            return digitsOnly;
+        }
+        return `34${digitsOnly.replace(/^0+/, '')}`;
+    };
 
     const updateButtons = () => {
         serviceButtons.forEach((button) => {
@@ -298,6 +310,10 @@ function initServiceMobileRedirect() {
             if (mobileQuery.matches) {
                 const cardHeading = button.closest('.service-detailed-card')?.querySelector('.service-header h3');
                 const serviceName = cardHeading ? cardHeading.textContent.trim() : button.textContent.trim();
+                const lowerServiceName = serviceName.toLowerCase();
+                const whatsappNumber = lowerServiceName.includes('hipoteca')
+                    ? formatWhatsappNumber(hipotecaWhatsappNumber)
+                    : formatWhatsappNumber(defaultWhatsappNumber);
                 const message = `Hola, me gustaría recibir información sobre ${serviceName}.`;
                 const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
