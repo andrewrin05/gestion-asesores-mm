@@ -312,16 +312,49 @@ function initServiceMobileRedirect() {
 
     const updateButtons = () => {
         serviceButtons.forEach((button) => {
-            const originalHref = button.dataset.desktopHref || button.getAttribute('href') || '#';
-            if (!button.dataset.desktopHref) {
-                button.dataset.desktopHref = originalHref;
+            if (typeof button.dataset.originalHref === 'undefined') {
+                button.dataset.originalHref = button.getAttribute('href') || '#';
             }
 
-            if (mobileQuery.matches) {
-                const cardHeading = button.closest('.service-detailed-card')?.querySelector('.service-header h3');
-                const serviceName = cardHeading ? cardHeading.textContent.trim() : button.textContent.trim();
-                const lowerServiceName = serviceName.toLowerCase();
-                const whatsappNumber = lowerServiceName.includes('hipoteca')
+            if (typeof button.dataset.desktopTarget === 'undefined') {
+                button.dataset.desktopTarget = button.getAttribute('target') || '';
+            }
+
+            if (typeof button.dataset.desktopRel === 'undefined') {
+                button.dataset.desktopRel = button.getAttribute('rel') || '';
+            }
+
+            const cardHeading = button.closest('.service-detailed-card')?.querySelector('.service-header h3');
+            const serviceName = (cardHeading ? cardHeading.textContent : button.textContent || '').trim();
+            if (!serviceName) {
+                return;
+            }
+
+            const normalizedService = serviceName
+                .toLowerCase()
+                .normalize('nfd')
+                .replace(/[\u0300-\u036f]/g, '');
+            const isVehicleQuote = normalizedService.includes('seguro de automovil');
+            const isMotoQuote = normalizedService.includes('seguro de moto');
+            const usesQuotePage = isVehicleQuote || isMotoQuote;
+
+            const originalHref = button.dataset.originalHref;
+            let desktopHref = originalHref;
+
+            if (!usesQuotePage) {
+                if (originalHref.includes('cotizar.html')) {
+                    desktopHref = originalHref.replace('cotizar.html', 'contact.html');
+                } else if (originalHref.includes('cotizar')) {
+                    desktopHref = originalHref.replace('cotizar', 'contact');
+                } else if (!originalHref.includes('contact')) {
+                    desktopHref = 'contact.html';
+                }
+            }
+
+            button.dataset.desktopHref = desktopHref;
+
+            if (mobileQuery.matches && !usesQuotePage) {
+                const whatsappNumber = normalizedService.includes('hipoteca')
                     ? formatWhatsappNumber(hipotecaWhatsappNumber, { fallback: defaultWhatsappNumber })
                     : formatWhatsappNumber(defaultWhatsappNumber);
                 const message = `Hola, me gustaria recibir informacion sobre ${serviceName}.`;
@@ -331,9 +364,19 @@ function initServiceMobileRedirect() {
                 button.setAttribute('target', '_blank');
                 button.setAttribute('rel', 'noopener noreferrer');
             } else {
-                button.setAttribute('href', button.dataset.desktopHref);
-                button.removeAttribute('target');
-                button.removeAttribute('rel');
+                button.setAttribute('href', desktopHref);
+
+                if (button.dataset.desktopTarget) {
+                    button.setAttribute('target', button.dataset.desktopTarget);
+                } else {
+                    button.removeAttribute('target');
+                }
+
+                if (button.dataset.desktopRel) {
+                    button.setAttribute('rel', button.dataset.desktopRel);
+                } else {
+                    button.removeAttribute('rel');
+                }
             }
         });
     };
