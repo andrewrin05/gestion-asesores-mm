@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPartnersMarquee();
     initCTAEventTracking();
     initFormTracking();
+    initIntroVideoAutoplay();
 });
 
 function sendAnalyticsEvent(eventName, category, label, value) {
@@ -298,3 +299,111 @@ function setupFormAnalytics(form, formName) {
         }
     });
 }
+
+function initIntroVideoAutoplay() {
+    const introVideo = document.querySelector('.intro-video__ratio video');
+    if (!introVideo) {
+        return;
+    }
+
+    introVideo.removeAttribute('controls');
+    introVideo.controls = false;
+
+    introVideo.setAttribute('muted', '');
+    introVideo.setAttribute('autoplay', '');
+    introVideo.setAttribute('playsinline', '');
+    introVideo.setAttribute('webkit-playsinline', '');
+    introVideo.setAttribute('loop', '');
+    introVideo.setAttribute('preload', 'auto');
+    introVideo.defaultMuted = true;
+    introVideo.autoplay = true;
+    introVideo.muted = true;
+    introVideo.volume = 0;
+    introVideo.loop = true;
+    introVideo.playsInline = true;
+    introVideo.preload = 'auto';
+    introVideo.load();
+
+    let controlsRestored = false;
+    let playAttempts = 0;
+    const maxAutoRetries = 3;
+
+    const restoreControls = () => {
+        if (controlsRestored) {
+            return;
+        }
+        controlsRestored = true;
+        introVideo.setAttribute('controls', '');
+        introVideo.controls = true;
+    };
+
+    const tryPlay = () => {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            restoreControls();
+            return;
+        }
+
+        if (playAttempts >= maxAutoRetries) {
+            restoreControls();
+            return;
+        }
+
+        playAttempts += 1;
+        const playPromise = introVideo.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+            playPromise.then(() => {
+                restoreControls();
+            }).catch((error) => {
+                console.warn('Intro video autoplay blocked', error);
+                // Some browsers still block autoplay; retry after a minimal interaction.
+                let cleanup;
+
+                const resumeOnInteraction = () => {
+                    const manualPlay = introVideo.play();
+                    if (manualPlay && typeof manualPlay.then === 'function') {
+                        manualPlay.then(() => {
+                            restoreControls();
+                            cleanup();
+                        }).catch((reason) => {
+                            console.warn('Intro video play retry failed', reason);
+                            cleanup();
+                        });
+                    } else {
+                        restoreControls();
+                        cleanup();
+                    }
+                };
+
+                cleanup = () => {
+                    window.removeEventListener('scroll', resumeOnInteraction);
+                    window.removeEventListener('click', resumeOnInteraction);
+                    window.removeEventListener('touchstart', resumeOnInteraction);
+                    window.removeEventListener('pointerdown', resumeOnInteraction);
+                };
+
+                window.addEventListener('scroll', resumeOnInteraction, { once: true });
+                window.addEventListener('click', resumeOnInteraction, { once: true });
+                window.addEventListener('touchstart', resumeOnInteraction, { once: true });
+                window.addEventListener('pointerdown', resumeOnInteraction, { once: true });
+
+                if (playAttempts < maxAutoRetries) {
+                    setTimeout(tryPlay, 500);
+                }
+            });
+        } else {
+            restoreControls();
+        }
+    };
+
+    if (introVideo.readyState >= 2) {
+        tryPlay();
+    } else {
+        introVideo.addEventListener('loadeddata', tryPlay, { once: true });
+    }
+
+    window.addEventListener('load', tryPlay, { once: true });
+    introVideo.addEventListener('canplaythrough', tryPlay, { once: true });
+}
+
+
+
