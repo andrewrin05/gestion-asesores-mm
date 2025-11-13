@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPartnersMarquee();
     initCTAEventTracking();
     initFormTracking();
+    initServiceMobileRedirect();
     initIntroVideoAutoplay();
 });
 
@@ -275,6 +276,48 @@ function initFormTracking() {
     const quoteForm = document.getElementById('quote-form');
     if (quoteForm) {
         setupFormAnalytics(quoteForm, 'cotizacion');
+    }
+}
+
+function initServiceMobileRedirect() {
+    const serviceButtons = document.querySelectorAll('.service-btn');
+    if (!serviceButtons.length) {
+        return;
+    }
+
+    const whatsappNumber = '34620916063';
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    const updateButtons = () => {
+        serviceButtons.forEach((button) => {
+            const originalHref = button.dataset.desktopHref || button.getAttribute('href') || '#';
+            if (!button.dataset.desktopHref) {
+                button.dataset.desktopHref = originalHref;
+            }
+
+            if (mobileQuery.matches) {
+                const cardHeading = button.closest('.service-detailed-card')?.querySelector('.service-header h3');
+                const serviceName = cardHeading ? cardHeading.textContent.trim() : button.textContent.trim();
+                const message = `Hola, me gustaría recibir información sobre ${serviceName}.`;
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+                button.setAttribute('href', whatsappURL);
+                button.setAttribute('target', '_blank');
+                button.setAttribute('rel', 'noopener noreferrer');
+            } else {
+                button.setAttribute('href', button.dataset.desktopHref);
+                button.removeAttribute('target');
+                button.removeAttribute('rel');
+            }
+        });
+    };
+
+    updateButtons();
+
+    if (typeof mobileQuery.addEventListener === 'function') {
+        mobileQuery.addEventListener('change', updateButtons);
+    } else if (typeof mobileQuery.addListener === 'function') {
+        mobileQuery.addListener(updateButtons);
     }
 }
 
