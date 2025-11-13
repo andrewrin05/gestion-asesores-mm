@@ -306,27 +306,31 @@ function initIntroVideoAutoplay() {
         return;
     }
 
-    introVideo.removeAttribute('controls');
-    introVideo.controls = false;
-
-    introVideo.setAttribute('muted', '');
     introVideo.setAttribute('autoplay', '');
     introVideo.setAttribute('playsinline', '');
     introVideo.setAttribute('webkit-playsinline', '');
-    introVideo.setAttribute('loop', '');
     introVideo.setAttribute('preload', 'auto');
-    introVideo.defaultMuted = true;
+    introVideo.removeAttribute('loop');
+    introVideo.defaultMuted = false;
     introVideo.autoplay = true;
-    introVideo.muted = true;
-    introVideo.volume = 0;
-    introVideo.loop = true;
+    introVideo.muted = false;
+    introVideo.volume = 1;
+    introVideo.loop = false;
     introVideo.playsInline = true;
     introVideo.preload = 'auto';
     introVideo.load();
 
+    introVideo.addEventListener('ended', () => {
+        introVideo.autoplay = false;
+        introVideo.removeAttribute('autoplay');
+        introVideo.loop = false;
+        introVideo.removeAttribute('loop');
+        introVideo.pause();
+    }, { once: true });
+
     let controlsRestored = false;
     let playAttempts = 0;
-    const maxAutoRetries = 3;
+    const maxAutoRetries = 1;
 
     const restoreControls = () => {
         if (controlsRestored) {
