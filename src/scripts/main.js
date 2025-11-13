@@ -1,4 +1,4 @@
-const DEFAULT_WHATSAPP_NUMBER = '620916063';
+const DEFAULT_WHATSAPP_NUMBER = '+34620916063';
 const DEFAULT_WHATSAPP_MESSAGE = 'Hola, quisiera solicitar una cotizacion gratuita con Gestion y Asesores M&M';
 
 const basePath = (() => {
