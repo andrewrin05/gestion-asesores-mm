@@ -338,17 +338,44 @@ function initServiceMobileRedirect() {
             const isMotoQuote = normalizedService.includes('seguro de moto');
             const usesQuotePage = isVehicleQuote || isMotoQuote;
 
+            const resolveHref = (href) => {
+                try {
+                    return new URL(href, window.location.href);
+                } catch (error) {
+                    return null;
+                }
+            };
+
             const originalHref = button.dataset.originalHref;
             let desktopHref = originalHref;
 
             if (!usesQuotePage) {
-                if (originalHref.includes('cotizar.html')) {
-                    desktopHref = originalHref.replace('cotizar.html', 'contact.html');
-                } else if (originalHref.includes('cotizar')) {
-                    desktopHref = originalHref.replace('cotizar', 'contact');
-                } else if (!originalHref.includes('contact')) {
+                const resolvedOriginal = resolveHref(originalHref);
+                if (resolvedOriginal) {
+                    const path = resolvedOriginal.pathname || '';
+                    let contactPath = path;
+
+                    if (/cotizar\.html?$/i.test(path)) {
+                        contactPath = path.replace(/cotizar\.html?$/i, 'contact.html');
+                    } else if (!/contact\.html?$/i.test(path)) {
+                        const pathSegments = path.split('/');
+                        if (pathSegments.length > 0) {
+                            pathSegments[pathSegments.length - 1] = 'contact.html';
+                            contactPath = pathSegments.join('/');
+                        } else {
+                            contactPath = 'contact.html';
+                        }
+                    }
+
+                    resolvedOriginal.pathname = contactPath;
+                    resolvedOriginal.search = '';
+                    resolvedOriginal.hash = '';
+                    desktopHref = resolvedOriginal.pathname;
+                } else {
                     desktopHref = 'contact.html';
                 }
+
+                button.dataset.originalHref = desktopHref;
             }
 
             button.dataset.desktopHref = desktopHref;
