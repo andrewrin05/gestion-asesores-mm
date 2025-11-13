@@ -934,6 +934,217 @@ nav a:hover {
     margin: 0 auto;
 }
 
+.quote-form {
+    max-width: none;
+}
+
+.quote-form__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1fr);
+    gap: 32px;
+    align-items: start;
+}
+
+.quote-form__card {
+    background: var(--white);
+    border-radius: 24px;
+    border: 1px solid rgba(30, 58, 138, 0.08);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.quote-form__section {
+    padding: 32px;
+    position: relative;
+}
+
+.quote-form__section + .quote-form__section {
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.quote-form__section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.quote-form__section-header h3 {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.quote-form__section-header p {
+    margin: 0;
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+}
+
+.quote-form__section-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.15), rgba(30, 64, 175, 0.35));
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.quote-form__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.quote-form__field label {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.quote-form__field input,
+.quote-form__field select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    border-radius: 14px;
+    background-color: rgba(248, 250, 252, 0.85);
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.quote-form__field input:focus,
+.quote-form__field select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    background-color: var(--white);
+}
+
+.quote-form__field select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, rgba(30, 58, 138, 0.6) 50%),
+                      linear-gradient(135deg, rgba(30, 58, 138, 0.6) 50%, transparent 50%);
+    background-position: calc(100% - 18px) calc(50% - 4px), calc(100% - 12px) calc(50% + 4px);
+    background-size: 8px 8px, 8px 8px;
+    background-repeat: no-repeat;
+    padding-right: 44px;
+}
+
+.quote-form__submit {
+    padding: 32px;
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.8), rgba(226, 232, 240, 0.6));
+    display: flex;
+    justify-content: flex-end;
+}
+
+.quote-form__submit .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quote-form__aside {
+    position: relative;
+}
+
+.quote-form__aside-card {
+    position: sticky;
+    top: 120px;
+    background: linear-gradient(150deg, rgba(30, 58, 138, 0.95), rgba(37, 99, 235, 0.9));
+    color: var(--white);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.35);
+    overflow: hidden;
+}
+
+.quote-form__aside-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+}
+
+.quote-form__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: grid;
+    gap: 14px;
+}
+
+.quote-form__benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.5;
+    font-size: 0.98rem;
+}
+
+.quote-form__benefits i {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+}
+
+.quote-form__privacy {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quote-form__privacy i {
+    font-size: 1rem;
+}
+
+@media (max-width: 1080px) {
+    .quote-form__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-form__aside-card {
+        position: static;
+    }
+}
+
+@media (max-width: 640px) {
+    .quote-form__section {
+        padding: 24px;
+    }
+
+    .quote-form__submit {
+        padding: 24px;
+        justify-content: center;
+    }
+
+    .quote-form__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-form__section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .quote-form__section-icon {
+        width: 42px;
+        height: 42px;
+    }
+}
+
 .form-row {
     display: flex;
     gap: 20px;

@@ -72,61 +72,94 @@
 
         <section class="quote-form-section slide-up">
             <div class="container">
-                <form id="quote-form" action="https://formspree.io/f/xpwkzjjy" method="POST">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" id="nombre" name="nombre" required>
+                <form id="quote-form" class="quote-form" action="https://formspree.io/f/xpwkzjjy" method="POST">
+                    <div class="quote-form__layout">
+                        <div class="quote-form__card">
+                            <div class="quote-form__section">
+                                <div class="quote-form__section-header">
+                                    <span class="quote-form__section-icon" aria-hidden="true"><i class="fas fa-user-check"></i></span>
+                                    <div>
+                                        <h3>Datos personales</h3>
+                                        <p>Cuéntanos quién eres para personalizar tu póliza.</p>
+                                    </div>
+                                </div>
+                                <div class="quote-form__grid">
+                                    <div class="quote-form__field">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+                                    </div>
+                                    <div class="quote-form__field">
+                                        <label for="apellidos">Apellidos</label>
+                                        <input type="text" id="apellidos" name="apellidos" autocomplete="family-name" required>
+                                    </div>
+                                    <div class="quote-form__field">
+                                        <label for="dni">DNI/NIE</label>
+                                        <input type="text" id="dni" name="dni" inputmode="text" required>
+                                    </div>
+                                    <div class="quote-form__field">
+                                        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quote-form__section">
+                                <div class="quote-form__section-header">
+                                    <span class="quote-form__section-icon" aria-hidden="true"><i class="fas fa-car"></i></span>
+                                    <div>
+                                        <h3>Sobre tu vehículo</h3>
+                                        <p>Indícanos los detalles para buscar la cobertura ideal.</p>
+                                    </div>
+                                </div>
+                                <div class="quote-form__grid">
+                                    <div class="quote-form__field">
+                                        <label for="fecha_carnet">Fecha de Carnet</label>
+                                        <input type="date" id="fecha_carnet" name="fecha_carnet" required>
+                                    </div>
+                                    <div class="quote-form__field">
+                                        <label for="codigo_postal">Código Postal</label>
+                                        <input type="text" id="codigo_postal" name="codigo_postal" inputmode="numeric" required>
+                                    </div>
+                                    <div class="quote-form__field">
+                                        <label for="tipo_vehiculo">Tipo de Vehículo</label>
+                                        <select id="tipo_vehiculo" name="tipo_vehiculo" required>
+                                            <option value="">Seleccionar...</option>
+                                            <option value="coche">Coche</option>
+                                            <option value="moto">Moto</option>
+                                        </select>
+                                    </div>
+                                    <div class="quote-form__field">
+                                        <label for="matricula">Matrícula</label>
+                                        <input type="text" id="matricula" name="matricula" required>
+                                    </div>
+                                    <div class="quote-form__field">
+                                        <label for="marca">Marca del Coche/Moto</label>
+                                        <input type="text" id="marca" name="marca" required>
+                                    </div>
+                                    <div class="quote-form__field">
+                                        <label for="modelo">Modelo del Coche/Moto</label>
+                                        <input type="text" id="modelo" name="modelo" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quote-form__submit">
+                                <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i>Enviar cotización</button>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="apellidos">Apellidos</label>
-                            <input type="text" id="apellidos" name="apellidos" required>
-                        </div>
+
+                        <aside class="quote-form__aside" aria-label="Resumen del servicio">
+                            <div class="quote-form__aside-card">
+                                <h3>¿Qué pasa después?</h3>
+                                <ul class="quote-form__benefits">
+                                    <li><i class="fas fa-stopwatch"></i>Recibe una comparación en menos de 24&nbsp;horas hábiles.</li>
+                                    <li><i class="fas fa-shield-alt"></i>Analizamos más de 10 aseguradoras para ti.</li>
+                                    <li><i class="fas fa-headset"></i>Acompañamiento personalizado durante todo el proceso.</li>
+                                </ul>
+                                <p class="quote-form__privacy"><i class="fas fa-lock"></i> Tratamos tus datos con confidencialidad y solo los usamos para tu cotización.</p>
+                            </div>
+                        </aside>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="dni">DNI/NIE</label>
-                            <input type="text" id="dni" name="dni" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="matricula">Matrícula</label>
-                            <input type="text" id="matricula" name="matricula" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="fecha_carnet">Fecha de Carnet</label>
-                            <input type="date" id="fecha_carnet" name="fecha_carnet" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="codigo_postal">Código Postal</label>
-                            <input type="text" id="codigo_postal" name="codigo_postal" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tipo_vehiculo">Tipo de Vehículo</label>
-                            <select id="tipo_vehiculo" name="tipo_vehiculo" required>
-                                <option value="">Seleccionar...</option>
-                                <option value="coche">Coche</option>
-                                <option value="moto">Moto</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="marca">Marca del Coche/Moto</label>
-                            <input type="text" id="marca" name="marca" required>
-                        </div>
-                    <div class="form-group full-width">
-                        <label for="modelo">Modelo del Coche/Moto</label>
-                        <input type="text" id="modelo" name="modelo" required>
-                    </div>
-                    <button type="submit" class="btn-primary">Enviar Cotización</button>
                 </form>
             </div>
         </section>
