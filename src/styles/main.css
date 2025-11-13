@@ -348,6 +348,34 @@ nav a:hover {
     background: #000;
 }
 
+.intro-video__unmute {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.75);
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.intro-video__unmute:hover {
+    background: rgba(15, 23, 42, 0.9);
+    transform: translateY(-1px);
+}
+
+.intro-video__unmute[hidden] {
+    display: none;
+}
+
 .intro-video__content h2 {
     color: var(--primary-color);
     margin-bottom: 20px;

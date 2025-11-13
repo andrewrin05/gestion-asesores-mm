@@ -306,19 +306,43 @@ function initIntroVideoAutoplay() {
         return;
     }
 
+    const unmuteButton = document.querySelector('[data-video-unmute]');
+
+    introVideo.setAttribute('muted', '');
     introVideo.setAttribute('autoplay', '');
     introVideo.setAttribute('playsinline', '');
     introVideo.setAttribute('webkit-playsinline', '');
     introVideo.setAttribute('preload', 'auto');
     introVideo.removeAttribute('loop');
-    introVideo.defaultMuted = false;
+    introVideo.defaultMuted = true;
     introVideo.autoplay = true;
-    introVideo.muted = false;
-    introVideo.volume = 1;
+    introVideo.muted = true;
+    introVideo.volume = 0;
     introVideo.loop = false;
     introVideo.playsInline = true;
     introVideo.preload = 'auto';
     introVideo.load();
+
+    const showUnmuteHint = () => {
+        if (!unmuteButton) {
+            return;
+        }
+        const shouldShow = introVideo.muted || introVideo.volume === 0;
+        unmuteButton.hidden = !shouldShow;
+    };
+
+    if (unmuteButton) {
+        unmuteButton.addEventListener('click', () => {
+            introVideo.muted = false;
+            introVideo.defaultMuted = false;
+            introVideo.volume = 1;
+            introVideo.removeAttribute('muted');
+            introVideo.play().catch(() => {});
+            showUnmuteHint();
+        });
+    }
+
+    introVideo.addEventListener('volumechange', showUnmuteHint);
 
     introVideo.addEventListener('ended', () => {
         introVideo.autoplay = false;
@@ -326,54 +350,39 @@ function initIntroVideoAutoplay() {
         introVideo.loop = false;
         introVideo.removeAttribute('loop');
         introVideo.pause();
+        showUnmuteHint();
     }, { once: true });
 
-    let controlsRestored = false;
     let playAttempts = 0;
-    const maxAutoRetries = 1;
-
-    const restoreControls = () => {
-        if (controlsRestored) {
-            return;
-        }
-        controlsRestored = true;
-        introVideo.setAttribute('controls', '');
-        introVideo.controls = true;
-    };
+    const maxAutoRetries = 3;
 
     const tryPlay = () => {
         if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            restoreControls();
+            showUnmuteHint();
             return;
         }
 
         if (playAttempts >= maxAutoRetries) {
-            restoreControls();
+            showUnmuteHint();
             return;
         }
 
         playAttempts += 1;
         const playPromise = introVideo.play();
         if (playPromise && typeof playPromise.then === 'function') {
-            playPromise.then(() => {
-                restoreControls();
-            }).catch((error) => {
+            playPromise.catch((error) => {
                 console.warn('Intro video autoplay blocked', error);
-                // Some browsers still block autoplay; retry after a minimal interaction.
                 let cleanup;
 
                 const resumeOnInteraction = () => {
                     const manualPlay = introVideo.play();
                     if (manualPlay && typeof manualPlay.then === 'function') {
                         manualPlay.then(() => {
-                            restoreControls();
                             cleanup();
-                        }).catch((reason) => {
-                            console.warn('Intro video play retry failed', reason);
+                        }).catch(() => {
                             cleanup();
                         });
                     } else {
-                        restoreControls();
                         cleanup();
                     }
                 };
@@ -391,11 +400,11 @@ function initIntroVideoAutoplay() {
                 window.addEventListener('pointerdown', resumeOnInteraction, { once: true });
 
                 if (playAttempts < maxAutoRetries) {
-                    setTimeout(tryPlay, 500);
+                    setTimeout(tryPlay, 400);
+                } else {
+                    showUnmuteHint();
                 }
             });
-        } else {
-            restoreControls();
         }
     };
 
@@ -407,6 +416,8 @@ function initIntroVideoAutoplay() {
 
     window.addEventListener('load', tryPlay, { once: true });
     introVideo.addEventListener('canplaythrough', tryPlay, { once: true });
+
+    showUnmuteHint();
 }
 
 

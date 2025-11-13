@@ -95,10 +95,14 @@
             <div class="container intro-video__layout">
                 <div class="intro-video__media">
                     <div class="intro-video__ratio">
-                        <video controls preload="auto" autoplay playsinline webkit-playsinline>
+                        <video controls preload="auto" autoplay muted playsinline webkit-playsinline>
                             <source src="videos/intro.mp4" type="video/mp4">
                             Tu navegador no soporta la reproducción de video HTML5.
                         </video>
+                        <button type="button" class="intro-video__unmute" data-video-unmute>
+                            <i class="fas fa-volume-up" aria-hidden="true"></i>
+                            <span>Activar sonido</span>
+                        </button>
                     </div>
                 </div>
                 <div class="intro-video__content">
