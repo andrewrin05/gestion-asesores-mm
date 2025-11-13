@@ -311,6 +311,26 @@ function initServiceMobileRedirect() {
     }
 
     const mobileQuery = window.matchMedia('(max-width: 768px)');
+    const handleServiceClick = (event) => {
+        if (!mobileQuery.matches) {
+            return;
+        }
+
+        const button = event.target.closest('.service-btn');
+        if (!button || !button.dataset.mobileWhatsappHref) {
+            return;
+        }
+
+        event.preventDefault();
+        const whatsappHref = button.dataset.mobileWhatsappHref;
+
+        if (button.dataset.desktopTarget === '_blank') {
+            window.open(whatsappHref, '_blank', 'noopener,noreferrer');
+            return;
+        }
+
+        window.open(whatsappHref, '_blank', 'noopener,noreferrer');
+    };
 
     const updateButtons = () => {
         serviceButtons.forEach((button) => {
@@ -383,6 +403,7 @@ function initServiceMobileRedirect() {
                 button.setAttribute('href', whatsappURL);
                 button.setAttribute('target', '_blank');
                 button.setAttribute('rel', 'noopener noreferrer');
+                button.dataset.mobileWhatsappHref = whatsappURL;
             } else {
                 button.setAttribute('href', desktopHref);
 
@@ -397,6 +418,8 @@ function initServiceMobileRedirect() {
                 } else {
                     button.removeAttribute('rel');
                 }
+
+                delete button.dataset.mobileWhatsappHref;
             }
         });
     };
@@ -408,6 +431,8 @@ function initServiceMobileRedirect() {
     } else if (typeof mobileQuery.addListener === 'function') {
         mobileQuery.addListener(updateButtons);
     }
+
+    document.addEventListener('click', handleServiceClick, true);
 }
 
 function markCotizarLinksForMobileWhatsapp() {
