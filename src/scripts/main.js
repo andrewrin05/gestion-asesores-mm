@@ -1,3 +1,6 @@
+const DEFAULT_WHATSAPP_NUMBER = '620916063';
+const DEFAULT_WHATSAPP_MESSAGE = 'Hola, quisiera solicitar una cotizacion gratuita con Gestion y Asesores M&M';
+
 const basePath = (() => {
     const scripts = document.getElementsByTagName('script');
     for (const script of scripts) {
@@ -201,6 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCTAEventTracking();
     initFormTracking();
     initServiceMobileRedirect();
+    markCotizarLinksForMobileWhatsapp();
     initMobileWhatsappCTA();
     initIntroVideoAutoplay();
 });
@@ -306,8 +310,6 @@ function initServiceMobileRedirect() {
         return;
     }
 
-    const defaultWhatsappNumber = '620916063';
-    const hipotecaWhatsappNumber = '628449014';
     const mobileQuery = window.matchMedia('(max-width: 768px)');
 
     const updateButtons = () => {
@@ -370,14 +372,11 @@ function initServiceMobileRedirect() {
                 desktopUrl.hash = '';
             }
 
-            const desktopHref = desktopUrl.toString();
+            const desktopHref = `${desktopUrl.pathname}${desktopUrl.search}${desktopUrl.hash}`;
             button.dataset.desktopHref = desktopHref;
 
             if (mobileQuery.matches) {
-                const isHipoteca = normalizedService.includes('hipoteca');
-                const whatsappNumber = isHipoteca
-                    ? formatWhatsappNumber(hipotecaWhatsappNumber, { fallback: defaultWhatsappNumber })
-                    : formatWhatsappNumber(defaultWhatsappNumber);
+                const whatsappNumber = formatWhatsappNumber(DEFAULT_WHATSAPP_NUMBER);
                 const message = `Hola, me gustaria recibir informacion sobre ${serviceName}.`;
                 const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
@@ -409,6 +408,27 @@ function initServiceMobileRedirect() {
     } else if (typeof mobileQuery.addListener === 'function') {
         mobileQuery.addListener(updateButtons);
     }
+}
+
+function markCotizarLinksForMobileWhatsapp() {
+    const cotizarLinks = document.querySelectorAll('a[href*="cotizar.html"]');
+    if (!cotizarLinks.length) {
+        return;
+    }
+
+    cotizarLinks.forEach((link) => {
+        if (link.classList.contains('service-btn')) {
+            return;
+        }
+
+        if (!link.dataset.mobileWhatsappNumber) {
+            link.dataset.mobileWhatsappNumber = DEFAULT_WHATSAPP_NUMBER;
+        }
+
+        if (!link.dataset.mobileWhatsappMessage) {
+            link.dataset.mobileWhatsappMessage = DEFAULT_WHATSAPP_MESSAGE;
+        }
+    });
 }
 
 function initMobileWhatsappCTA() {
