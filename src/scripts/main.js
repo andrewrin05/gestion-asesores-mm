@@ -380,8 +380,9 @@ function initServiceMobileRedirect() {
 
             button.dataset.desktopHref = desktopHref;
 
-            if (mobileQuery.matches && !usesQuotePage) {
-                const whatsappNumber = normalizedService.includes('hipoteca')
+            if (mobileQuery.matches) {
+                const isHipoteca = normalizedService.includes('hipoteca');
+                const whatsappNumber = isHipoteca
                     ? formatWhatsappNumber(hipotecaWhatsappNumber, { fallback: defaultWhatsappNumber })
                     : formatWhatsappNumber(defaultWhatsappNumber);
                 const message = `Hola, me gustaria recibir informacion sobre ${serviceName}.`;
