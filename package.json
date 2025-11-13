@@ -6,7 +6,7 @@
   "scripts": {
     "start": "live-server src",
     "build": "echo 'Build process not defined'",
-    "test": "echo 'No tests defined'"
+    "test": "node tests/mobile-whatsapp-check.js"
   },
   "keywords": [
     "seguros",
@@ -16,8 +16,8 @@
   ],
   "author": "Gestion y Asesores M&M",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
+    "jsdom": "^27.2.0",
     "live-server": "^1.2.1"
   }
 }
