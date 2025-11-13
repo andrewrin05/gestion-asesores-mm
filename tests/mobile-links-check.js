@@ -56,22 +56,31 @@ async function runCheck() {
 
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    const serviceButtons = [...window.document.querySelectorAll('.service-btn')];
+    const allServiceButtons = [...window.document.querySelectorAll('.service-btn')];
+    const whatsappButtons = allServiceButtons.filter((btn) => btn.classList.contains('service-btn--whatsapp'));
+    const contactButtons = allServiceButtons.filter((btn) => !btn.classList.contains('service-btn--whatsapp'));
     const navCotizar = window.document.getElementById('navCotizar');
 
-    assert.equal(serviceButtons.length, 2, 'Se esperaban dos botones de servicio en la maqueta');
+    assert.equal(contactButtons.length, 2, 'Se esperaban dos botones internos de servicio en la maqueta');
+    assert.equal(whatsappButtons.length, 2, 'Cada servicio debería generar un botón de WhatsApp');
 
-    serviceButtons.forEach((btn) => {
-        assert.ok(!btn.href.includes('wa.me'), 'El botón de servicio no debería apuntar a dominios externos');
-        assert.ok(btn.href.endsWith('/pages/contact.html'), 'El botón de servicio debería enlazar con contact.html');
-        assert.equal(btn.getAttribute('target'), null, 'El botón de servicio no debería forzar apertura en otra pestaña');
-        assert.equal(btn.getAttribute('rel'), null, 'El botón de servicio no debería añadir atributos rel especiales');
+    contactButtons.forEach((btn) => {
+        assert.ok(!btn.href.includes('wa.me'), 'El botón principal no debería apuntar a dominios externos');
+        assert.ok(btn.href.endsWith('/pages/contact.html'), 'El botón principal debería enlazar con contact.html');
+        assert.equal(btn.getAttribute('target'), null, 'El botón principal no debería forzar apertura en otra pestaña');
+        assert.equal(btn.getAttribute('rel'), null, 'El botón principal no debería añadir atributos rel especiales');
+    });
+
+    whatsappButtons.forEach((btn) => {
+        assert.ok(btn.href.startsWith('https://wa.me/34620916063'), 'El botón de WhatsApp debe apuntar al número configurado');
+        assert.ok(btn.href.includes('text='), 'El botón de WhatsApp debe incluir un mensaje predefinido');
+        assert.equal(btn.getAttribute('target'), '_blank', 'El botón de WhatsApp debería abrirse en una pestaña nueva');
     });
 
     assert.ok(navCotizar.href.endsWith('/pages/cotizar.html'), 'El enlace general de cotización debería conservar su ruta');
     assert.ok(!navCotizar.href.includes('wa.me'), 'El enlace general de cotización no debería apuntar a dominios externos');
 
-    console.log('✅ Verificación móvil: los botones mantienen enlaces internos sin referencias externas.');
+    console.log('✅ Verificación móvil: botones internos intactos y botones de WhatsApp generados correctamente.');
 }
 
 runCheck().catch((error) => {

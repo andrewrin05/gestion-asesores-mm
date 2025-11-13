@@ -1,3 +1,6 @@
+const DEFAULT_WHATSAPP_NUMBER = '620916063';
+const DEFAULT_WHATSAPP_MESSAGE_TEMPLATE = 'Hola, me gustaria recibir informacion sobre {service} con Gestion y Asesores M&M.';
+
 const FALLBACK_DIACRITIC_MAP = {
     '\u00e0': 'a',
     '\u00e1': 'a',
@@ -252,6 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPartnersMarquee();
     initCTAEventTracking();
     initFormTracking();
+    initServiceWhatsappButtons();
     initServiceMobileRedirect();
     initIntroVideoAutoplay();
 });
@@ -271,6 +275,44 @@ function sendAnalyticsEvent(eventName, category, label, value) {
     }
 
     window.gtag('event', eventName, eventPayload);
+}
+
+function formatWhatsappNumber(rawNumber, options = {}) {
+    const { countryCode = '34', fallback } = options;
+    const sanitize = (value) => (value || '').replace(/\D/g, '');
+
+    let digits = sanitize(rawNumber);
+    if (!digits && fallback) {
+        digits = sanitize(fallback);
+    }
+
+    if (!digits) {
+        return '';
+    }
+
+    if (digits.startsWith(countryCode)) {
+        return digits;
+    }
+
+    return `${countryCode}${digits.replace(/^0+/, '')}`;
+}
+
+function buildWhatsappMessage(serviceName) {
+    if (!serviceName) {
+        return DEFAULT_WHATSAPP_MESSAGE_TEMPLATE.replace('{service}', 'sus servicios');
+    }
+
+    return DEFAULT_WHATSAPP_MESSAGE_TEMPLATE.replace('{service}', serviceName);
+}
+
+function buildWhatsappURL(serviceName) {
+    const formattedNumber = formatWhatsappNumber(DEFAULT_WHATSAPP_NUMBER, { fallback: DEFAULT_WHATSAPP_NUMBER });
+    if (!formattedNumber) {
+        return '';
+    }
+
+    const message = buildWhatsappMessage(serviceName);
+    return `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
 }
 
 function initPartnersMarquee() {
@@ -337,6 +379,10 @@ function initServiceMobileRedirect() {
         return;
     }
     serviceButtons.forEach((button) => {
+        if (button.classList.contains('service-btn--whatsapp')) {
+            return;
+        }
+
         if (typeof button.dataset.originalHref === 'undefined') {
             button.dataset.originalHref = button.getAttribute('href') || '#';
         }
@@ -407,6 +453,48 @@ function initServiceMobileRedirect() {
             button.setAttribute('rel', button.dataset.desktopRel);
         } else {
             button.removeAttribute('rel');
+        }
+    });
+}
+
+function initServiceWhatsappButtons() {
+    const serviceCards = document.querySelectorAll('.service-detailed-card');
+    if (!serviceCards.length) {
+        return;
+    }
+
+    serviceCards.forEach((card) => {
+        if (card.querySelector('.service-btn--whatsapp')) {
+            return;
+        }
+
+        const serviceName = (card.querySelector('.service-header h3')?.textContent || '').trim();
+        const whatsappURL = buildWhatsappURL(serviceName);
+        if (!whatsappURL) {
+            return;
+        }
+
+        const whatsappButton = document.createElement('a');
+        whatsappButton.className = 'service-btn service-btn--whatsapp';
+        whatsappButton.href = whatsappURL;
+        whatsappButton.target = '_blank';
+        whatsappButton.rel = 'noopener noreferrer';
+        whatsappButton.setAttribute('aria-label', `Contactar por WhatsApp sobre ${serviceName || 'este servicio'}`);
+
+        const icon = document.createElement('i');
+        icon.className = 'fab fa-whatsapp';
+        icon.setAttribute('aria-hidden', 'true');
+
+        const textSpan = document.createElement('span');
+        textSpan.textContent = 'WhatsApp';
+
+        whatsappButton.append(icon, textSpan);
+
+        const referenceButton = card.querySelector('.service-btn:last-of-type');
+        if (referenceButton) {
+            referenceButton.insertAdjacentElement('afterend', whatsappButton);
+        } else {
+            card.appendChild(whatsappButton);
         }
     });
 }
