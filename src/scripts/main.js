@@ -201,6 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCTAEventTracking();
     initFormTracking();
     initServiceMobileRedirect();
+    initMobileWhatsappCTA();
     initIntroVideoAutoplay();
 });
 
@@ -219,6 +220,26 @@ function sendAnalyticsEvent(eventName, category, label, value) {
     }
 
     window.gtag('event', eventName, eventPayload);
+}
+
+function formatWhatsappNumber(rawNumber, options = {}) {
+    const { countryCode = '34', fallback } = options;
+    const sanitize = (value) => (value || '').replace(/\D/g, '');
+
+    let digits = sanitize(rawNumber);
+    if (!digits && fallback) {
+        digits = sanitize(fallback);
+    }
+
+    if (!digits) {
+        return '';
+    }
+
+    if (digits.startsWith(countryCode)) {
+        return digits;
+    }
+
+    return `${countryCode}${digits.replace(/^0+/, '')}`;
 }
 
 function initPartnersMarquee() {
@@ -289,17 +310,6 @@ function initServiceMobileRedirect() {
     const hipotecaWhatsappNumber = '628449014';
     const mobileQuery = window.matchMedia('(max-width: 768px)');
 
-    const formatWhatsappNumber = (rawNumber) => {
-        const digitsOnly = (rawNumber || '').replace(/\D/g, '');
-        if (!digitsOnly) {
-            return defaultWhatsappNumber;
-        }
-        if (digitsOnly.startsWith('34')) {
-            return digitsOnly;
-        }
-        return `34${digitsOnly.replace(/^0+/, '')}`;
-    };
-
     const updateButtons = () => {
         serviceButtons.forEach((button) => {
             const originalHref = button.dataset.desktopHref || button.getAttribute('href') || '#';
@@ -312,9 +322,9 @@ function initServiceMobileRedirect() {
                 const serviceName = cardHeading ? cardHeading.textContent.trim() : button.textContent.trim();
                 const lowerServiceName = serviceName.toLowerCase();
                 const whatsappNumber = lowerServiceName.includes('hipoteca')
-                    ? formatWhatsappNumber(hipotecaWhatsappNumber)
+                    ? formatWhatsappNumber(hipotecaWhatsappNumber, { fallback: defaultWhatsappNumber })
                     : formatWhatsappNumber(defaultWhatsappNumber);
-                const message = `Hola, me gustaría recibir información sobre ${serviceName}.`;
+                const message = `Hola, me gustaria recibir informacion sobre ${serviceName}.`;
                 const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
                 button.setAttribute('href', whatsappURL);
@@ -334,6 +344,67 @@ function initServiceMobileRedirect() {
         mobileQuery.addEventListener('change', updateButtons);
     } else if (typeof mobileQuery.addListener === 'function') {
         mobileQuery.addListener(updateButtons);
+    }
+}
+
+function initMobileWhatsappCTA() {
+    const whatsappCTAs = document.querySelectorAll('[data-mobile-whatsapp-number]');
+    if (!whatsappCTAs.length) {
+        return;
+    }
+
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    const updateLinks = () => {
+        whatsappCTAs.forEach((cta) => {
+            if (!cta.dataset.desktopHref) {
+                cta.dataset.desktopHref = cta.getAttribute('href') || '#';
+            }
+
+            if (typeof cta.dataset.desktopTarget === 'undefined') {
+                cta.dataset.desktopTarget = cta.getAttribute('target') || '';
+            }
+
+            if (typeof cta.dataset.desktopRel === 'undefined') {
+                cta.dataset.desktopRel = cta.getAttribute('rel') || '';
+            }
+
+            if (mobileQuery.matches) {
+                const rawNumber = cta.dataset.mobileWhatsappNumber;
+                const message = cta.dataset.mobileWhatsappMessage || '';
+                const formattedNumber = formatWhatsappNumber(rawNumber, { fallback: rawNumber });
+                if (!formattedNumber) {
+                    return;
+                }
+
+                const whatsappURL = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
+                cta.setAttribute('href', whatsappURL);
+                cta.setAttribute('target', '_blank');
+                cta.setAttribute('rel', 'noopener noreferrer');
+            } else {
+                cta.setAttribute('href', cta.dataset.desktopHref);
+
+                if (cta.dataset.desktopTarget) {
+                    cta.setAttribute('target', cta.dataset.desktopTarget);
+                } else {
+                    cta.removeAttribute('target');
+                }
+
+                if (cta.dataset.desktopRel) {
+                    cta.setAttribute('rel', cta.dataset.desktopRel);
+                } else {
+                    cta.removeAttribute('rel');
+                }
+            }
+        });
+    };
+
+    updateLinks();
+
+    if (typeof mobileQuery.addEventListener === 'function') {
+        mobileQuery.addEventListener('change', updateLinks);
+    } else if (typeof mobileQuery.addListener === 'function') {
+        mobileQuery.addListener(updateLinks);
     }
 }
 
