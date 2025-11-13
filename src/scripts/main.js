@@ -197,7 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    initServicesPreview();
     initPartnersMarquee();
     initCTAEventTracking();
     initFormTracking();
@@ -218,52 +217,6 @@ function sendAnalyticsEvent(eventName, category, label, value) {
     }
 
     window.gtag('event', eventName, eventPayload);
-}
-
-function initServicesPreview() {
-    const servicesGrid = document.querySelector('[data-services-grid]');
-    if (!servicesGrid) {
-        return;
-    }
-
-    fetch(`${basePath}data/services.json`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('No se pudo cargar el listado de servicios');
-            }
-            return response.json();
-        })
-        .then(data => {
-            const services = Array.isArray(data.services) ? data.services.slice(0, 8) : [];
-            if (!services.length) {
-                servicesGrid.innerHTML = '<p>No se encontraron servicios disponibles por el momento.</p>';
-                return;
-            }
-
-            servicesGrid.innerHTML = '';
-            services.forEach(service => {
-                const card = document.createElement('div');
-                card.className = 'service-card';
-
-                const icon = service.emoji || '⭐';
-                const coverage = service.coverage || '';
-
-                card.innerHTML = `
-                    <div class="service-card__header">
-                        <div class="service-card__icon" aria-hidden="true">${icon}</div>
-                        <h3>${service.name}</h3>
-                    </div>
-                    <p>${service.description}</p>
-                    <div class="service-card__meta">
-                        <span>${coverage}</span>
-                    </div>
-                `;
-                servicesGrid.appendChild(card);
-            });
-        })
-        .catch(() => {
-            servicesGrid.innerHTML = '<p class="service-card__error">No pudimos cargar los servicios. Intenta nuevamente más tarde.</p>';
-        });
 }
 
 function initPartnersMarquee() {
