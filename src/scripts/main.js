@@ -346,38 +346,31 @@ function initServiceMobileRedirect() {
                 }
             };
 
-            const originalHref = button.dataset.originalHref;
-            let desktopHref = originalHref;
-
-            if (!usesQuotePage) {
-                const resolvedOriginal = resolveHref(originalHref);
-                if (resolvedOriginal) {
-                    const path = resolvedOriginal.pathname || '';
-                    let contactPath = path;
-
-                    if (/cotizar\.html?$/i.test(path)) {
-                        contactPath = path.replace(/cotizar\.html?$/i, 'contact.html');
-                    } else if (!/contact\.html?$/i.test(path)) {
-                        const pathSegments = path.split('/');
-                        if (pathSegments.length > 0) {
-                            pathSegments[pathSegments.length - 1] = 'contact.html';
-                            contactPath = pathSegments.join('/');
-                        } else {
-                            contactPath = 'contact.html';
-                        }
-                    }
-
-                    resolvedOriginal.pathname = contactPath;
-                    resolvedOriginal.search = '';
-                    resolvedOriginal.hash = '';
-                    desktopHref = resolvedOriginal.pathname;
-                } else {
-                    desktopHref = 'contact.html';
-                }
-
-                button.dataset.originalHref = desktopHref;
+            const absoluteOriginalHref = button.dataset.originalHrefAbsolute || button.href;
+            if (!button.dataset.originalHrefAbsolute) {
+                button.dataset.originalHrefAbsolute = absoluteOriginalHref;
             }
 
+            const originalUrl = resolveHref(absoluteOriginalHref);
+            if (!originalUrl) {
+                return;
+            }
+
+            const desktopUrl = new URL(originalUrl.toString());
+
+            if (!usesQuotePage) {
+                const pathSegments = desktopUrl.pathname.split('/');
+                if (pathSegments.length > 0) {
+                    pathSegments[pathSegments.length - 1] = 'contact.html';
+                    desktopUrl.pathname = pathSegments.join('/');
+                } else {
+                    desktopUrl.pathname = 'contact.html';
+                }
+                desktopUrl.search = '';
+                desktopUrl.hash = '';
+            }
+
+            const desktopHref = desktopUrl.toString();
             button.dataset.desktopHref = desktopHref;
 
             if (mobileQuery.matches) {
