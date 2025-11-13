@@ -1,5 +1,54 @@
-const DEFAULT_WHATSAPP_NUMBER = '+34620916063';
-const DEFAULT_WHATSAPP_MESSAGE = 'Hola, quisiera solicitar una cotizacion gratuita con Gestion y Asesores M&M';
+const FALLBACK_DIACRITIC_MAP = {
+    '\u00e0': 'a',
+    '\u00e1': 'a',
+    '\u00e2': 'a',
+    '\u00e3': 'a',
+    '\u00e4': 'a',
+    '\u00e7': 'c',
+    '\u00e8': 'e',
+    '\u00e9': 'e',
+    '\u00ea': 'e',
+    '\u00eb': 'e',
+    '\u00ec': 'i',
+    '\u00ed': 'i',
+    '\u00ee': 'i',
+    '\u00ef': 'i',
+    '\u00f1': 'n',
+    '\u00f2': 'o',
+    '\u00f3': 'o',
+    '\u00f4': 'o',
+    '\u00f5': 'o',
+    '\u00f6': 'o',
+    '\u00f9': 'u',
+    '\u00fa': 'u',
+    '\u00fb': 'u',
+    '\u00fc': 'u'
+};
+
+const FALLBACK_DIACRITIC_REGEX = /[\u00e0\u00e1\u00e2\u00e3\u00e4\u00e7\u00e8\u00e9\u00ea\u00eb\u00ec\u00ed\u00ee\u00ef\u00f1\u00f2\u00f3\u00f4\u00f5\u00f6\u00f9\u00fa\u00fb\u00fc]/g;
+
+const supportsNativeNormalize = typeof String.prototype.normalize === 'function';
+
+const normalizeToASCII = (value) => {
+    if (!value) {
+        return '';
+    }
+
+    const lower = value.toLowerCase();
+
+    if (supportsNativeNormalize) {
+        try {
+            return lower
+                .normalize('nfd')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[\u00e0-\u00ff]/g, (char) => FALLBACK_DIACRITIC_MAP[char] || char);
+        } catch (error) {
+            // Fall through to manual replacement
+        }
+    }
+
+    return lower.replace(FALLBACK_DIACRITIC_REGEX, (char) => FALLBACK_DIACRITIC_MAP[char] || char);
+};
 
 const basePath = (() => {
     const scripts = document.getElementsByTagName('script');
@@ -204,8 +253,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initCTAEventTracking();
     initFormTracking();
     initServiceMobileRedirect();
-    markCotizarLinksForMobileWhatsapp();
-    initMobileWhatsappCTA();
     initIntroVideoAutoplay();
 });
 
@@ -224,26 +271,6 @@ function sendAnalyticsEvent(eventName, category, label, value) {
     }
 
     window.gtag('event', eventName, eventPayload);
-}
-
-function formatWhatsappNumber(rawNumber, options = {}) {
-    const { countryCode = '34', fallback } = options;
-    const sanitize = (value) => (value || '').replace(/\D/g, '');
-
-    let digits = sanitize(rawNumber);
-    if (!digits && fallback) {
-        digits = sanitize(fallback);
-    }
-
-    if (!digits) {
-        return '';
-    }
-
-    if (digits.startsWith(countryCode)) {
-        return digits;
-    }
-
-    return `${countryCode}${digits.replace(/^0+/, '')}`;
 }
 
 function initPartnersMarquee() {
@@ -309,212 +336,79 @@ function initServiceMobileRedirect() {
     if (!serviceButtons.length) {
         return;
     }
+    serviceButtons.forEach((button) => {
+        if (typeof button.dataset.originalHref === 'undefined') {
+            button.dataset.originalHref = button.getAttribute('href') || '#';
+        }
 
-    const mobileQuery = window.matchMedia('(max-width: 768px)');
-    const handleServiceClick = (event) => {
-        if (!mobileQuery.matches) {
+        if (typeof button.dataset.desktopTarget === 'undefined') {
+            button.dataset.desktopTarget = button.getAttribute('target') || '';
+        }
+
+        if (typeof button.dataset.desktopRel === 'undefined') {
+            button.dataset.desktopRel = button.getAttribute('rel') || '';
+        }
+
+        const cardHeading = button.closest('.service-detailed-card')?.querySelector('.service-header h3');
+        const serviceName = (cardHeading ? cardHeading.textContent : button.textContent || '').trim();
+        if (!serviceName) {
             return;
         }
 
-        const button = event.target.closest('.service-btn');
-        if (!button || !button.dataset.mobileWhatsappHref) {
+        const normalizedService = normalizeToASCII(serviceName);
+        const isVehicleQuote = normalizedService.includes('seguro de automovil');
+        const isMotoQuote = normalizedService.includes('seguro de moto');
+        const usesQuotePage = isVehicleQuote || isMotoQuote;
+
+        const resolveHref = (href) => {
+            try {
+                return new URL(href, window.location.href);
+            } catch (error) {
+                return null;
+            }
+        };
+
+        const absoluteOriginalHref = button.dataset.originalHrefAbsolute || button.href;
+        if (!button.dataset.originalHrefAbsolute) {
+            button.dataset.originalHrefAbsolute = absoluteOriginalHref;
+        }
+
+        const originalUrl = resolveHref(absoluteOriginalHref);
+        if (!originalUrl) {
             return;
         }
 
-        event.preventDefault();
-        const whatsappHref = button.dataset.mobileWhatsappHref;
+        const desktopUrl = new URL(originalUrl.toString());
 
-        if (button.dataset.desktopTarget === '_blank') {
-            window.open(whatsappHref, '_blank', 'noopener,noreferrer');
-            return;
-        }
-
-        window.open(whatsappHref, '_blank', 'noopener,noreferrer');
-    };
-
-    const updateButtons = () => {
-        serviceButtons.forEach((button) => {
-            if (typeof button.dataset.originalHref === 'undefined') {
-                button.dataset.originalHref = button.getAttribute('href') || '#';
-            }
-
-            if (typeof button.dataset.desktopTarget === 'undefined') {
-                button.dataset.desktopTarget = button.getAttribute('target') || '';
-            }
-
-            if (typeof button.dataset.desktopRel === 'undefined') {
-                button.dataset.desktopRel = button.getAttribute('rel') || '';
-            }
-
-            const cardHeading = button.closest('.service-detailed-card')?.querySelector('.service-header h3');
-            const serviceName = (cardHeading ? cardHeading.textContent : button.textContent || '').trim();
-            if (!serviceName) {
-                return;
-            }
-
-            const normalizedService = serviceName
-                .toLowerCase()
-                .normalize('nfd')
-                .replace(/[\u0300-\u036f]/g, '');
-            const isVehicleQuote = normalizedService.includes('seguro de automovil');
-            const isMotoQuote = normalizedService.includes('seguro de moto');
-            const usesQuotePage = isVehicleQuote || isMotoQuote;
-
-            const resolveHref = (href) => {
-                try {
-                    return new URL(href, window.location.href);
-                } catch (error) {
-                    return null;
-                }
-            };
-
-            const absoluteOriginalHref = button.dataset.originalHrefAbsolute || button.href;
-            if (!button.dataset.originalHrefAbsolute) {
-                button.dataset.originalHrefAbsolute = absoluteOriginalHref;
-            }
-
-            const originalUrl = resolveHref(absoluteOriginalHref);
-            if (!originalUrl) {
-                return;
-            }
-
-            const desktopUrl = new URL(originalUrl.toString());
-
-            if (!usesQuotePage) {
-                const pathSegments = desktopUrl.pathname.split('/');
-                if (pathSegments.length > 0) {
-                    pathSegments[pathSegments.length - 1] = 'contact.html';
-                    desktopUrl.pathname = pathSegments.join('/');
-                } else {
-                    desktopUrl.pathname = 'contact.html';
-                }
-                desktopUrl.search = '';
-                desktopUrl.hash = '';
-            }
-
-            const desktopHref = `${desktopUrl.pathname}${desktopUrl.search}${desktopUrl.hash}`;
-            button.dataset.desktopHref = desktopHref;
-
-            if (mobileQuery.matches) {
-                const whatsappNumber = formatWhatsappNumber(DEFAULT_WHATSAPP_NUMBER);
-                const message = `Hola, me gustaria recibir informacion sobre ${serviceName}.`;
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-                button.setAttribute('href', whatsappURL);
-                button.setAttribute('target', '_blank');
-                button.setAttribute('rel', 'noopener noreferrer');
-                button.dataset.mobileWhatsappHref = whatsappURL;
+        if (!usesQuotePage) {
+            const pathSegments = desktopUrl.pathname.split('/');
+            if (pathSegments.length > 0) {
+                pathSegments[pathSegments.length - 1] = 'contact.html';
+                desktopUrl.pathname = pathSegments.join('/');
             } else {
-                button.setAttribute('href', desktopHref);
-
-                if (button.dataset.desktopTarget) {
-                    button.setAttribute('target', button.dataset.desktopTarget);
-                } else {
-                    button.removeAttribute('target');
-                }
-
-                if (button.dataset.desktopRel) {
-                    button.setAttribute('rel', button.dataset.desktopRel);
-                } else {
-                    button.removeAttribute('rel');
-                }
-
-                delete button.dataset.mobileWhatsappHref;
+                desktopUrl.pathname = 'contact.html';
             }
-        });
-    };
-
-    updateButtons();
-
-    if (typeof mobileQuery.addEventListener === 'function') {
-        mobileQuery.addEventListener('change', updateButtons);
-    } else if (typeof mobileQuery.addListener === 'function') {
-        mobileQuery.addListener(updateButtons);
-    }
-
-    document.addEventListener('click', handleServiceClick, true);
-}
-
-function markCotizarLinksForMobileWhatsapp() {
-    const cotizarLinks = document.querySelectorAll('a[href*="cotizar.html"]');
-    if (!cotizarLinks.length) {
-        return;
-    }
-
-    cotizarLinks.forEach((link) => {
-        if (link.classList.contains('service-btn')) {
-            return;
+            desktopUrl.search = '';
+            desktopUrl.hash = '';
         }
 
-        if (!link.dataset.mobileWhatsappNumber) {
-            link.dataset.mobileWhatsappNumber = DEFAULT_WHATSAPP_NUMBER;
+        const desktopHref = `${desktopUrl.pathname}${desktopUrl.search}${desktopUrl.hash}`;
+        button.dataset.desktopHref = desktopHref;
+
+        button.setAttribute('href', desktopHref);
+
+        if (button.dataset.desktopTarget) {
+            button.setAttribute('target', button.dataset.desktopTarget);
+        } else {
+            button.removeAttribute('target');
         }
 
-        if (!link.dataset.mobileWhatsappMessage) {
-            link.dataset.mobileWhatsappMessage = DEFAULT_WHATSAPP_MESSAGE;
+        if (button.dataset.desktopRel) {
+            button.setAttribute('rel', button.dataset.desktopRel);
+        } else {
+            button.removeAttribute('rel');
         }
     });
-}
-
-function initMobileWhatsappCTA() {
-    const whatsappCTAs = document.querySelectorAll('[data-mobile-whatsapp-number]');
-    if (!whatsappCTAs.length) {
-        return;
-    }
-
-    const mobileQuery = window.matchMedia('(max-width: 768px)');
-
-    const updateLinks = () => {
-        whatsappCTAs.forEach((cta) => {
-            if (!cta.dataset.desktopHref) {
-                cta.dataset.desktopHref = cta.getAttribute('href') || '#';
-            }
-
-            if (typeof cta.dataset.desktopTarget === 'undefined') {
-                cta.dataset.desktopTarget = cta.getAttribute('target') || '';
-            }
-
-            if (typeof cta.dataset.desktopRel === 'undefined') {
-                cta.dataset.desktopRel = cta.getAttribute('rel') || '';
-            }
-
-            if (mobileQuery.matches) {
-                const rawNumber = cta.dataset.mobileWhatsappNumber;
-                const message = cta.dataset.mobileWhatsappMessage || '';
-                const formattedNumber = formatWhatsappNumber(rawNumber, { fallback: rawNumber });
-                if (!formattedNumber) {
-                    return;
-                }
-
-                const whatsappURL = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(message)}`;
-                cta.setAttribute('href', whatsappURL);
-                cta.setAttribute('target', '_blank');
-                cta.setAttribute('rel', 'noopener noreferrer');
-            } else {
-                cta.setAttribute('href', cta.dataset.desktopHref);
-
-                if (cta.dataset.desktopTarget) {
-                    cta.setAttribute('target', cta.dataset.desktopTarget);
-                } else {
-                    cta.removeAttribute('target');
-                }
-
-                if (cta.dataset.desktopRel) {
-                    cta.setAttribute('rel', cta.dataset.desktopRel);
-                } else {
-                    cta.removeAttribute('rel');
-                }
-            }
-        });
-    };
-
-    updateLinks();
-
-    if (typeof mobileQuery.addEventListener === 'function') {
-        mobileQuery.addEventListener('change', updateLinks);
-    } else if (typeof mobileQuery.addListener === 'function') {
-        mobileQuery.addListener(updateLinks);
-    }
 }
 
 function setupFormAnalytics(form, formName) {

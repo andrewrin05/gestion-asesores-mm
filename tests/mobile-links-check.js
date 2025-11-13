@@ -3,19 +3,6 @@ const fs = require('fs');
 const assert = require('assert/strict');
 const { JSDOM } = require('jsdom');
 
-function createMatchMedia(matches) {
-    const mq = () => ({
-        matches,
-        media: '',
-        addEventListener: () => {},
-        removeEventListener: () => {},
-        addListener: () => {},
-        removeListener: () => {}
-    });
-    mq.matches = matches;
-    return mq;
-}
-
 async function runCheck() {
     const html = `<!DOCTYPE html>
 <html lang="es">
@@ -46,32 +33,19 @@ async function runCheck() {
 
     const { window } = dom;
 
-    window.matchMedia = (query) => {
-        const base = {
-            matches: true,
-            media: query,
-            addEventListener: () => {},
-            removeEventListener: () => {},
-            addListener: () => {},
-            removeListener: () => {}
-        };
-        return base;
-    };
+    window.matchMedia = (query) => ({
+        matches: true,
+        media: query,
+        addEventListener: () => {},
+        removeEventListener: () => {},
+        addListener: () => {},
+        removeListener: () => {}
+    });
 
     window.gtag = () => {};
 
     if (typeof window.String.prototype.normalize === 'function') {
-        const nativeNormalize = window.String.prototype.normalize;
-        window.String.prototype.normalize = function patchedNormalize(form) {
-            if (typeof form === 'string') {
-                try {
-                    return nativeNormalize.call(this, form);
-                } catch (error) {
-                    return nativeNormalize.call(this, form.toUpperCase());
-                }
-            }
-            return nativeNormalize.call(this, form);
-        };
+        window.String.prototype.normalize = undefined;
     }
 
     const scriptPath = path.join(__dirname, '..', 'src', 'scripts', 'main.js');
@@ -80,7 +54,7 @@ async function runCheck() {
 
     window.document.dispatchEvent(new window.Event('DOMContentLoaded', { bubbles: true }));
 
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     const serviceButtons = [...window.document.querySelectorAll('.service-btn')];
     const navCotizar = window.document.getElementById('navCotizar');
@@ -88,16 +62,16 @@ async function runCheck() {
     assert.equal(serviceButtons.length, 2, 'Se esperaban dos botones de servicio en la maqueta');
 
     serviceButtons.forEach((btn) => {
-        assert.ok(btn.href.startsWith('https://wa.me/34620916063'), 'El botón de servicio no apunta a WhatsApp');
-        assert.equal(btn.target, '_blank', 'El botón de servicio debería abrirse en una pestaña nueva en móvil');
+        assert.ok(!btn.href.includes('wa.me'), 'El botón de servicio no debería apuntar a dominios externos');
+        assert.ok(btn.href.endsWith('/pages/contact.html'), 'El botón de servicio debería enlazar con contact.html');
+        assert.equal(btn.getAttribute('target'), null, 'El botón de servicio no debería forzar apertura en otra pestaña');
+        assert.equal(btn.getAttribute('rel'), null, 'El botón de servicio no debería añadir atributos rel especiales');
     });
 
-    assert.ok(navCotizar.href.startsWith('https://wa.me/34620916063'), 'El enlace general de cotización no apunta a WhatsApp en móvil');
+    assert.ok(navCotizar.href.endsWith('/pages/cotizar.html'), 'El enlace general de cotización debería conservar su ruta');
+    assert.ok(!navCotizar.href.includes('wa.me'), 'El enlace general de cotización no debería apuntar a dominios externos');
 
-    const decodedMessage = decodeURIComponent(serviceButtons[0].href.split('text=')[1] || '');
-    assert.ok(decodedMessage.includes('Hola, me gustaria recibir informacion'), 'El mensaje prellenado no es el esperado');
-
-    console.log('✅ Verificación móvil: todos los botones de servicios y enlaces de cotizar apuntan a WhatsApp.');
+    console.log('✅ Verificación móvil: los botones mantienen enlaces internos sin referencias externas.');
 }
 
 runCheck().catch((error) => {

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "live-server src",
     "build": "echo 'Build process not defined'",
-    "test": "node tests/mobile-whatsapp-check.js"
+  "test": "node tests/mobile-links-check.js"
   },
   "keywords": [
     "seguros",
