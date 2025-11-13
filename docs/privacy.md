@@ -44,5 +44,5 @@ Si tienes alguna pregunta sobre esta Política de Privacidad, las prácticas de 
 
 Gestion y Asesores M&M  
 CALLE FLORENCIO GARCIA 6 LOCAL 13  
-gestionyasesoresmm@gmail.com  
+contacto@gestionyasesoresmm.com  
 628 449 014 | 620 916 063  

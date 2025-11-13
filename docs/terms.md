@@ -28,6 +28,6 @@ Podemos actualizar estos términos en cualquier momento. Te notificaremos de cam
 
 ## Contacto
 
-Para preguntas, contáctanos en gestionyasesoresmm@gmail.com o 628 449 014.
+Para preguntas, contáctanos en contacto@gestionyasesoresmm.com o 628 449 014.
 
 Última actualización: Noviembre 2025
