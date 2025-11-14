@@ -26,7 +26,7 @@ async function runCheck() {
 </html>`;
 
     const dom = new JSDOM(html, {
-        url: 'https://gestion-asesores-mm.vercel.app/pages/services.html',
+        url: 'https://gestionyasesoresmm.com/pages/services.html',
         runScripts: 'dangerously',
         pretendToBeVisual: true
     });
