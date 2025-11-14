@@ -1155,6 +1155,32 @@ nav a:hover {
     padding-right: 44px;
 }
 
+.quote-form__consent {
+    padding: 0 32px 28px;
+    background: rgba(226, 232, 240, 0.2);
+}
+
+.consent-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+}
+
+.consent-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: var(--primary-color);
+}
+
+.consent-checkbox span a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 .quote-form__submit {
     padding: 32px;
     border-top: 1px solid rgba(148, 163, 184, 0.25);
@@ -1242,6 +1268,10 @@ nav a:hover {
 @media (max-width: 640px) {
     .quote-form__section {
         padding: 24px;
+    }
+
+    .quote-form__consent {
+        padding: 0 24px 24px;
     }
 
     .quote-form__submit {
