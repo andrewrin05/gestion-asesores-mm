@@ -43,6 +43,6 @@ Podemos actualizar esta Política de Privacidad de vez en cuando. Te notificarem
 Si tienes alguna pregunta sobre esta Política de Privacidad, las prácticas de este sitio o tus tratos con este sitio, por favor contáctanos en:
 
 Gestión y Asesores M&M SL  
-CALLE FLORENCIO GARCIA 6 LOCAL 13  
+Calle Florencio García, 6, Local 13. 28027, Madrid  
 contacto@gestionyasesoresmm.com  
 628 449 014 | 620 916 063  
