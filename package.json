@@ -1,7 +1,7 @@
 {
   "name": "gestion-y-asesores-mm",
   "version": "1.0.0",
-  "description": "Página informativa sobre seguros de Gestion y Asesores M&M",
+  "description": "Página informativa sobre seguros de Gestión y Asesores M&M SL",
   "main": "src/index.html",
   "scripts": {
     "start": "live-server src",
@@ -14,7 +14,7 @@
     "gestion",
     "informativo"
   ],
-  "author": "Gestion y Asesores M&M",
+  "author": "Gestión y Asesores M&M SL",
   "license": "MIT",
   "devDependencies": {
     "jsdom": "^27.2.0",

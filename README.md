@@ -1,8 +1,8 @@
-# Gestion y Asesores M&M
+# Gestión y Asesores M&M SL
 
 ## Descripción del Proyecto
 
-Gestion y Asesores M&M es una empresa dedicada a ofrecer servicios de seguros personalizados. Este proyecto es un sitio web informativo que proporciona a los usuarios una visión general de los servicios ofrecidos, así como información sobre la empresa y cómo contactarla.
+Gestión y Asesores M&M SL es una empresa dedicada a ofrecer servicios de seguros personalizados. Este proyecto es un sitio web informativo que proporciona a los usuarios una visión general de los servicios ofrecidos, así como información sobre la empresa y cómo contactarla.
 
 ## Estructura del Proyecto
 
@@ -37,7 +37,7 @@ El proyecto está organizado de la siguiente manera:
 
 ## Uso
 
-Abre `src/index.html` en tu navegador para ver el sitio web en acción. Navega a través de las diferentes páginas para explorar los servicios y obtener más información sobre Gestion y Asesores M&M.
+Abre `src/index.html` en tu navegador para ver el sitio web en acción. Navega a través de las diferentes páginas para explorar los servicios y obtener más información sobre Gestión y Asesores M&M SL.
 
 ## Contribuciones
 

@@ -1,8 +1,8 @@
-# Política de Privacidad de Gestion y Asesores M&M
+# Política de Privacidad de Gestión y Asesores M&M SL
 
 ## Introducción
 
-En Gestion y Asesores M&M, nos comprometemos a proteger tu privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos tu información cuando visitas nuestro sitio web o utilizas nuestros servicios.
+En Gestión y Asesores M&M SL, nos comprometemos a proteger tu privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos tu información cuando visitas nuestro sitio web o utilizas nuestros servicios.
 
 ## Información que Recopilamos
 
@@ -42,7 +42,7 @@ Podemos actualizar esta Política de Privacidad de vez en cuando. Te notificarem
 
 Si tienes alguna pregunta sobre esta Política de Privacidad, las prácticas de este sitio o tus tratos con este sitio, por favor contáctanos en:
 
-Gestion y Asesores M&M  
+Gestión y Asesores M&M SL  
 CALLE FLORENCIO GARCIA 6 LOCAL 13  
 contacto@gestionyasesoresmm.com  
 628 449 014 | 620 916 063  

@@ -1,5 +1,5 @@
 const DEFAULT_WHATSAPP_NUMBER = '620916063';
-const DEFAULT_WHATSAPP_MESSAGE_TEMPLATE = 'Hola, me gustaria recibir informacion sobre {service} con Gestion y Asesores M&M.';
+const DEFAULT_WHATSAPP_MESSAGE_TEMPLATE = 'Hola, me gustaria recibir informacion sobre {service} con Gestión y Asesores M&M SL.';
 
 const FALLBACK_DIACRITIC_MAP = {
     '\u00e0': 'a',

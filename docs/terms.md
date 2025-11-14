@@ -1,8 +1,8 @@
-# Términos de Servicio de Gestion y Asesores M&M
+# Términos de Servicio de Gestión y Asesores M&M SL
 
 ## Introducción
 
-Bienvenido a Gestion y Asesores M&M. Al acceder y utilizar nuestro sitio web, aceptas cumplir con estos Términos de Servicio. Si no estás de acuerdo, por favor, no uses nuestro sitio.
+Bienvenido a Gestión y Asesores M&M SL. Al acceder y utilizar nuestro sitio web, aceptas cumplir con estos Términos de Servicio. Si no estás de acuerdo, por favor, no uses nuestro sitio.
 
 ## Uso del Sitio
 
@@ -20,7 +20,7 @@ No somos responsables por daños indirectos, perdidas de datos o interrupciones 
 
 ## Propiedad Intelectual
 
-Todo el contenido del sitio (textos, imágenes, logos) es propiedad de Gestion y Asesores M&M y está protegido por leyes de derechos de autor.
+Todo el contenido del sitio (textos, imágenes, logos) es propiedad de Gestión y Asesores M&M SL y está protegido por leyes de derechos de autor.
 
 ## Modificaciones
 
